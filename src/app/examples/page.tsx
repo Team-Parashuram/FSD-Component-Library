@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelInput } from "@/components/ui/pixel/pixel-input";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelCheckbox } from "@/components/ui/pixel/pixel-checkbox";
-import { PixelDialog, PixelDialogContent, PixelDialogDescription, PixelDialogHeader, PixelDialogTitle, PixelDialogTrigger } from "@/components/ui/pixel/pixel-dialog";
-import { PixelToastProvider, usePixelToast } from "@/components/ui/pixel/pixel-toast";
-import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel/pixel-select";
-import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
-import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel/pixel-accordion";
+import { PixelButton } from "@/components/ui/pixel-button";
+import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel-card";
+import { PixelInput } from "@/components/ui/pixel-input";
+import { PixelBadge } from "@/components/ui/pixel-badge";
+import { PixelCheckbox } from "@/components/ui/pixel-checkbox";
+import { PixelDialog, PixelDialogContent, PixelDialogDescription, PixelDialogHeader, PixelDialogTitle, PixelDialogTrigger } from "@/components/ui/pixel-dialog";
+import { PixelToastProvider, usePixelToast } from "@/components/ui/pixel-toast";
+import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel-select";
+import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel-tabs";
+import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel-accordion";
 import { Home, Settings, User, Bell, Trophy, Star } from "lucide-react";
 
 function DashboardContent() {

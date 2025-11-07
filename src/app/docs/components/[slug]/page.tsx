@@ -3,14 +3,14 @@
 import { notFound } from "next/navigation";
 import { DocsSidebar } from "@/components/docs/sidebar";
 import { CodeBlock } from "@/components/docs/code-block";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelInput } from "@/components/ui/pixel/pixel-input";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
-import { PixelCheckbox } from "@/components/ui/pixel/pixel-checkbox";
-import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel/pixel-tabs";
-import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel/pixel-accordion";
-import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel/pixel-select";
+import { PixelButton } from "@/components/ui/pixel-button";
+import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel-card";
+import { PixelInput } from "@/components/ui/pixel-input";
+import { PixelBadge } from "@/components/ui/pixel-badge";
+import { PixelCheckbox } from "@/components/ui/pixel-checkbox";
+import { PixelTabs, PixelTabsContent, PixelTabsList, PixelTabsTrigger } from "@/components/ui/pixel-tabs";
+import { PixelAccordion, PixelAccordionContent, PixelAccordionItem, PixelAccordionTrigger } from "@/components/ui/pixel-accordion";
+import { PixelSelect, PixelSelectContent, PixelSelectItem, PixelSelectTrigger, PixelSelectValue } from "@/components/ui/pixel-select";
 import { useState } from "react";
 
 const componentDocs: Record<string, any> = {

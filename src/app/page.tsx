@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { PixelButton } from "@/components/ui/pixel/pixel-button";
-import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
-import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
+import { PixelButton } from "@/components/ui/pixel-button";
+import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardFooter, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel-card";
+import { PixelBadge } from "@/components/ui/pixel-badge";
 import { ArrowRight, Gamepad2, Sparkles, Code, Zap } from "lucide-react";
 import { ModeToggle } from "@/components/theme/theme-button";
 
