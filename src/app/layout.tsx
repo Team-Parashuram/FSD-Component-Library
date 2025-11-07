@@ -1,8 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme";
-import { ModeToggle } from "@/components/theme/theme-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pixel UI",
-  description: "Made By Team Parashuram",
+  title: "Pixel UI - 8-Bit Retro Component Library",
+  description: "A complete pixel-art/8-bit retro UI component library for React and Next.js",
 };
 
 export default function RootLayout({
@@ -26,6 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+        <style>{`
+          :root {
+            --font-press-start: 'Press Start 2P', monospace;
+          }
+        `}</style>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
         <ThemeProvider
           attribute="class"
@@ -33,7 +40,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
           {children}
         </ThemeProvider>
       </body>

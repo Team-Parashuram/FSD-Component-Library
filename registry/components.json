@@ -1,0 +1,156 @@
+{
+  "pixel-button": {
+    "name": "Pixel Button",
+    "description": "A retro 8-bit styled button component with pixel-perfect borders and instant state changes",
+    "files": ["components/ui/pixel/pixel-button.tsx"],
+    "dependencies": ["class-variance-authority", "lucide-react", "@radix-ui/react-slot"],
+    "registryDependencies": []
+  },
+  "pixel-card": {
+    "name": "Pixel Card",
+    "description": "A container component with pixel-art styling for displaying content",
+    "files": ["components/ui/pixel/pixel-card.tsx"],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-input": {
+    "name": "Pixel Input",
+    "description": "A text input field with retro pixel borders and styling",
+    "files": ["components/ui/pixel/pixel-input.tsx"],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-badge": {
+    "name": "Pixel Badge",
+    "description": "Small status indicators with pixel-art styling and color variants",
+    "files": ["components/ui/pixel/pixel-badge.tsx"],
+    "dependencies": ["class-variance-authority"],
+    "registryDependencies": []
+  },
+  "pixel-dialog": {
+    "name": "Pixel Dialog",
+    "description": "A modal dialog component with pixel-art borders and retro styling",
+    "files": ["components/ui/pixel/pixel-dialog.tsx"],
+    "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-toast": {
+    "name": "Pixel Toast",
+    "description": "Notification component with pixel styling and customizable positions",
+    "files": ["components/ui/pixel/pixel-toast.tsx"],
+    "dependencies": ["lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-select": {
+    "name": "Pixel Select",
+    "description": "A dropdown select component with pixel-art styling",
+    "files": ["components/ui/pixel/pixel-select.tsx"],
+    "dependencies": ["@radix-ui/react-select", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-checkbox": {
+    "name": "Pixel Checkbox",
+    "description": "A checkbox component with pixel-perfect square borders",
+    "files": ["components/ui/pixel/pixel-checkbox.tsx"],
+    "dependencies": ["@radix-ui/react-checkbox", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-tabs": {
+    "name": "Pixel Tabs",
+    "description": "Tabbed navigation with retro pixel styling",
+    "files": ["components/ui/pixel/pixel-tabs.tsx"],
+    "dependencies": ["@radix-ui/react-tabs"],
+    "registryDependencies": []
+  },
+  "pixel-accordion": {
+    "name": "Pixel Accordion",
+    "description": "Collapsible content sections with pixel-art borders",
+    "files": ["components/ui/pixel/pixel-accordion.tsx"],
+    "dependencies": ["@radix-ui/react-accordion", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-progress": {
+    "name": "Pixel Progress",
+    "description": "Progress bar with pixel styling and percentage display",
+    "files": ["components/ui/pixel/pixel-progress.tsx"],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-slider": {
+    "name": "Pixel Slider",
+    "description": "Range slider with pixel-art styling and thumb",
+    "files": ["components/ui/pixel/pixel-slider.tsx"],
+    "dependencies": ["@radix-ui/react-slider"],
+    "registryDependencies": []
+  },
+  "pixel-switch": {
+    "name": "Pixel Switch",
+    "description": "Toggle switch with pixel borders and instant transitions",
+    "files": ["components/ui/pixel/pixel-switch.tsx"],
+    "dependencies": ["@radix-ui/react-switch"],
+    "registryDependencies": []
+  },
+  "pixel-textarea": {
+    "name": "Pixel Textarea",
+    "description": "Multi-line text input with pixel borders",
+    "files": ["components/ui/pixel/pixel-textarea.tsx"],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-radio-group": {
+    "name": "Pixel Radio Group",
+    "description": "Radio button group with pixel styling",
+    "files": ["components/ui/pixel/pixel-radio-group.tsx"],
+    "dependencies": ["@radix-ui/react-radio-group", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-alert": {
+    "name": "Pixel Alert",
+    "description": "Alert component with variants and icons",
+    "files": ["components/ui/pixel/pixel-alert.tsx"],
+    "dependencies": ["class-variance-authority", "lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-tooltip": {
+    "name": "Pixel Tooltip",
+    "description": "Tooltip with pixel borders and styling",
+    "files": ["components/ui/pixel/pixel-tooltip.tsx"],
+    "dependencies": ["@radix-ui/react-tooltip"],
+    "registryDependencies": []
+  },
+  "pixel-popover": {
+    "name": "Pixel Popover",
+    "description": "Popover component with pixel styling",
+    "files": ["components/ui/pixel/pixel-popover.tsx"],
+    "dependencies": ["@radix-ui/react-popover"],
+    "registryDependencies": []
+  },
+  "pixel-table": {
+    "name": "Pixel Table",
+    "description": "Data table with pixel borders and styling",
+    "files": ["components/ui/pixel/pixel-table.tsx"],
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  "pixel-breadcrumb": {
+    "name": "Pixel Breadcrumb",
+    "description": "Breadcrumb navigation with pixel styling",
+    "files": ["components/ui/pixel/pixel-breadcrumb.tsx"],
+    "dependencies": ["lucide-react"],
+    "registryDependencies": []
+  },
+  "pixel-separator": {
+    "name": "Pixel Separator",
+    "description": "Horizontal or vertical separator line",
+    "files": ["components/ui/pixel/pixel-separator.tsx"],
+    "dependencies": ["@radix-ui/react-separator"],
+    "registryDependencies": []
+  },
+  "pixel-spinner": {
+    "name": "Pixel Spinner",
+    "description": "Loading spinner and dots with pixel styling",
+    "files": ["components/ui/pixel/pixel-spinner.tsx"],
+    "dependencies": ["class-variance-authority"],
+    "registryDependencies": []
+  }
+}
