@@ -16,6 +16,12 @@
 - Fixed glitch text component RGB split effect rendering to properly display animations without duplicate text artifacts.
 - Made parts of the Treasure hunt website that was used in IIIT Dharwad's Tech Fest and had 200 live users.(170K requests, 5k+ visits)
 
+## Himanshu Kumar (Github Username - himanshukumar19)
+- Created 4 new feedback components (PixelRating, PixelWarningTooltip, PixelUndoChip, PixelAIBubble) with interactive previews and full documentation.
+- Built comprehensive Redux filtering system for Pixel Shop with real-time search, multi-select category filters, price range filtering, and 5 sort options.
+- Fixed missing previews and code examples for 6 components (Drawer, AlertDialog, Toast, Sonner, Navigation Menu, Command).
+- Fixed accessibility issues in shop page .
+
 ## Pixel UI — 8-Bit Retro Component Library
 
 A complete pixel-art/8-bit retro UI component library with documentation website, built with Next.js, TypeScript, Tailwind CSS, and Radix UI primitives. Inspired by classic 8-bit games and retro computing aesthetics.
