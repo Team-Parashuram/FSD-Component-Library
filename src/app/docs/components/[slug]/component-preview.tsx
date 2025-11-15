@@ -36,6 +36,7 @@ import { PixelCollapsible, PixelCollapsibleContent, PixelCollapsibleTrigger } fr
 import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
 import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
 import { PixelHoverCard, PixelHoverCardContent, PixelHoverCardTrigger } from "@/components/ui/pixel/pixel-hover-card";
+import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -151,6 +152,24 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelTabsContent value="tab1">Content for tab 1</PixelTabsContent>
           <PixelTabsContent value="tab2">Content for tab 2</PixelTabsContent>
         </PixelTabs>
+      );
+    
+    case "pixel-hero":
+      return (
+        <PixelHero variant="default" size="md" className="w-full">
+          <PixelHeroContent>
+            <PixelHeroBadge>🎮 New Release</PixelHeroBadge>
+            <PixelHeroTitle size="md">Pixel UI</PixelHeroTitle>
+            <PixelHeroSubtitle size="sm">8-Bit Retro Components</PixelHeroSubtitle>
+            <PixelHeroDescription>
+              Build nostalgic web experiences with pixel-perfect components
+            </PixelHeroDescription>
+            <PixelHeroActions>
+              <PixelButton size="sm">Get Started</PixelButton>
+              <PixelButton size="sm" variant="ghost">Learn More</PixelButton>
+            </PixelHeroActions>
+          </PixelHeroContent>
+        </PixelHero>
       );
     
     case "pixel-accordion":

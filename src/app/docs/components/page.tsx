@@ -30,10 +30,8 @@ export default function ComponentsListPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTab, setSelectedTab] = useState<string>(getInitialCategory());
 
-  // Handle tab change and update URL
   const handleTabChange = (value: string) => {
     setSelectedTab(value);
-    // Update URL with new category parameter
     const params = new URLSearchParams(searchParams.toString());
     params.set("category", value.toLowerCase());
     router.push(`${pathname}?${params.toString()}`, { scroll: false });

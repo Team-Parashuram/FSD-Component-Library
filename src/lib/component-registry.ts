@@ -597,6 +597,168 @@ toast({
 
   // Layout
   {
+    slug: "pixel-hero",
+    title: "Hero Section",
+    description: "Pixel-perfect hero sections with multiple variants and layouts for landing pages.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelHero, 
+  PixelHeroContent, 
+  PixelHeroTitle, 
+  PixelHeroSubtitle, 
+  PixelHeroDescription, 
+  PixelHeroActions, 
+  PixelHeroBadge,
+  PixelHeroImage,
+  PixelHeroGrid,
+  PixelHeroFeature,
+  PixelHeroPattern
+} from "@/components/ui/pixel/pixel-hero"`,
+    usageCode: `<PixelHero variant="default" size="lg">
+  <PixelHeroContent>
+    <PixelHeroBadge>New Release v1.0</PixelHeroBadge>
+    <PixelHeroTitle>Welcome to Pixel UI</PixelHeroTitle>
+    <PixelHeroSubtitle>8-Bit Retro Component Library</PixelHeroSubtitle>
+    <PixelHeroDescription>
+      Build nostalgic web experiences with pixel-perfect components
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Learn More</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+    componentCode: `/src/components/ui/pixel/pixel-hero.tsx`,
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Hero visual style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl" | "full"', default: '"lg"', description: "Hero height/padding" },
+      { name: "align", type: '"left" | "center" | "right"', default: '"center"', description: "Content alignment" },
+      { name: "container", type: "boolean", default: "true", description: "Wrap content in container" },
+    ],
+    examples: [
+      {
+        title: "Simple Hero",
+        description: "Basic hero with title and actions",
+        code: `<PixelHero variant="default" size="lg">
+  <PixelHeroContent>
+    <PixelHeroTitle>Pixel UI</PixelHeroTitle>
+    <PixelHeroDescription>
+      8-bit retro components for modern web
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Documentation</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Badge",
+        description: "Hero with announcement badge",
+        code: `<PixelHero variant="primary" size="lg">
+  <PixelHeroContent>
+    <PixelHeroBadge>🎮 New Release</PixelHeroBadge>
+    <PixelHeroTitle size="xl">Level Up Your UI</PixelHeroTitle>
+    <PixelHeroSubtitle size="lg">
+      Nostalgic Design, Modern Code
+    </PixelHeroSubtitle>
+    <PixelHeroActions>
+      <PixelButton size="lg">Start Building</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Full Screen Hero",
+        description: "Hero that takes full viewport height",
+        code: `<PixelHero variant="gradient" size="full">
+  <PixelHeroContent>
+    <PixelHeroTitle size="xl">Build Retro Experiences</PixelHeroTitle>
+    <PixelHeroDescription>
+      Complete component library with 50+ pixel-perfect components
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Explore Components</PixelButton>
+      <PixelButton size="lg" variant="secondary">View Examples</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Pattern",
+        description: "Hero with background pattern overlay",
+        code: `<PixelHero variant="dark" size="lg" className="relative">
+  <PixelHeroPattern pattern="dots" />
+  <PixelHeroContent>
+    <PixelHeroTitle>Pixel Perfect Design</PixelHeroTitle>
+    <PixelHeroSubtitle>With Background Patterns</PixelHeroSubtitle>
+    <PixelHeroActions>
+      <PixelButton>Get Started</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Split Hero with Grid",
+        description: "Two-column hero layout with image",
+        code: `<PixelHero variant="default" size="lg" align="left">
+  <PixelHeroGrid>
+    <PixelHeroContent className="mx-0">
+      <PixelHeroBadge>⭐ Featured</PixelHeroBadge>
+      <PixelHeroTitle size="lg">Next-Gen Components</PixelHeroTitle>
+      <PixelHeroDescription>
+        Build faster with our pixel-art component library
+      </PixelHeroDescription>
+      <PixelHeroActions className="justify-start">
+        <PixelButton>Get Started</PixelButton>
+        <PixelButton variant="ghost">Learn More</PixelButton>
+      </PixelHeroActions>
+    </PixelHeroContent>
+    <PixelHeroImage>
+      <img src="/hero-image.png" alt="Hero" className="w-full h-auto" />
+    </PixelHeroImage>
+  </PixelHeroGrid>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Features",
+        description: "Hero with feature highlights",
+        code: `<PixelHero variant="secondary" size="lg">
+  <PixelHeroContent>
+    <PixelHeroTitle>Why Choose Pixel UI?</PixelHeroTitle>
+    <PixelHeroDescription>
+      Everything you need for retro web design
+    </PixelHeroDescription>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <PixelHeroFeature>
+        <span className="text-2xl">🎮</span>
+        <div>
+          <h3 className="font-bold">Retro Design</h3>
+          <p className="text-sm opacity-80">Authentic 8-bit styling</p>
+        </div>
+      </PixelHeroFeature>
+      <PixelHeroFeature>
+        <span className="text-2xl">⚡</span>
+        <div>
+          <h3 className="font-bold">Fast</h3>
+          <p className="text-sm opacity-80">Zero transitions</p>
+        </div>
+      </PixelHeroFeature>
+      <PixelHeroFeature>
+        <span className="text-2xl">♿</span>
+        <div>
+          <h3 className="font-bold">Accessible</h3>
+          <p className="text-sm opacity-80">ARIA compliant</p>
+        </div>
+      </PixelHeroFeature>
+    </div>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+    ],
+  },
+  {
     slug: "pixel-accordion",
     title: "Accordion",
     description: "Collapsible content sections.",
