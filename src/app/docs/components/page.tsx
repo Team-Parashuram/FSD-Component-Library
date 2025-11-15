@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { componentRegistry, categories, type ComponentCategory } from "@/lib/component-registry";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, PixelCardFooter } from "@/components/ui/pixel/pixel-card";
@@ -11,7 +12,32 @@ import { PixelInput } from "@/components/ui/pixel/pixel-input";
 import { Search, ArrowRight } from "lucide-react";
 
 export default function ComponentsListPage() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  
+  // Validate and set the initial tab based on URL parameter
+  const getInitialCategory = () => {
+    if (categoryParam) {
+      // Capitalize first letter to match category format
+      const formattedCategory = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase() as ComponentCategory;
+      // Check if it's a valid category
+      if (categories.includes(formattedCategory)) {
+        return formattedCategory;
+      }
+    }
+    return categories[0]; // Default to first category if param is invalid or missing
+  };
+
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTab, setSelectedTab] = useState<string>(getInitialCategory());
+
+  // Update selected tab when URL parameter changes
+  useEffect(() => {
+    const newCategory = getInitialCategory();
+    if (newCategory !== selectedTab) {
+      setSelectedTab(newCategory);
+    }
+  }, [categoryParam]);
 
   const filteredComponents = componentRegistry.filter((component) =>
     component.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -66,7 +92,7 @@ export default function ComponentsListPage() {
         </div>
 
         {/* Component Grid by Category */}
-        <PixelTabs defaultValue={categories[0]}>
+        <PixelTabs value={selectedTab} onValueChange={setSelectedTab}>
           <PixelTabsList className="mb-8">
             {categories.map((category) => (
               <PixelTabsTrigger key={category} value={category}>

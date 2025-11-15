@@ -133,12 +133,12 @@ export function Footer() {
             </div>
             <div className="mt-4">
               <a
-                href="https://github.com/MishraShardendu22/"
+                href="https://github.com/Team-Parashuram/Pixel-art-8-bit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs hover:text-[#ff8c00] dark:hover:text-[#ff8c00] transition-colors"
               >
-                By Shardendu Mishra
+                By Team Parashuram
               </a>
             </div>
           </div>
