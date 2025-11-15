@@ -1,7 +1,7 @@
 export interface ResumeData {
   id: string;
   name: string;
-  title?: string; // Job title/role from resume
+  title?: string;
   email: string;
   phone: string;
   location?: string;
@@ -40,22 +40,20 @@ export interface Education {
 }
 
 export function parseResume(text: string): Omit<ResumeData, 'id'> {
-  // Clean the text first
   const cleanedText = text.replace(/\n{3,}/g, '\n\n').trim();
   const lines = cleanedText.split('\n').map(line => line.trim()).filter(line => line);
   
-  // Extract basic contact info first
+  // Extract contact info
   const emailMatch = text.match(/[\w.-]+@[\w.-]+\.\w+/);
   const phoneMatch = text.match(/(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\d{10}/);
   const linkedinMatch = text.match(/(?:linkedin\.com\/in\/|linkedin:)\s*([\w-]+)/i);
   const githubMatch = text.match(/(?:github\.com\/|github:)\s*([\w-]+)/i);
   const portfolioMatch = text.match(/(https?:\/\/(?:www\.)?(?!linkedin|github)[\w-]+\.[\w]+(?:\/[\w.-]*)*)/);
   
-  // Extract name and title - look in first few lines only
+  // Extract name and title
   let name = '';
   let title = '';
   
-  // Common section headers to avoid
   const sectionHeaders = [
     'education', 'experience', 'projects', 'skills', 'technical skills',
     'work experience', 'summary', 'objective', 'certifications', 'awards'
@@ -65,21 +63,17 @@ export function parseResume(text: string): Omit<ResumeData, 'id'> {
     const line = lines[i];
     const lowerLine = line.toLowerCase();
     
-    // Skip if it's a section header
     if (sectionHeaders.some(header => lowerLine === header || lowerLine.startsWith(header + ':'))) {
       continue;
     }
     
-    // Skip if line contains contact info
+    // Skip contact info lines
     if (line.includes('@') || 
         (phoneMatch && line.includes(phoneMatch[0])) ||
-        line.includes('linkedin') ||
-        line.includes('github') ||
-        line.includes('leetcode') ||
-        line.includes('portfolio')) {
-      // But try to extract name from contact line if no name yet
+        /linkedin|github|leetcode|portfolio/.test(lowerLine)) {
+      
+      // Extract name from contact line
       if (!name && line.length > 10) {
-        // Name is usually at the start of contact line
         const parts = line.split(/[|\/]|(?=\d{10})|(?=\+?\d)/);
         const potentialName = parts[0]?.trim();
         if (potentialName && 
@@ -90,22 +84,23 @@ export function parseResume(text: string): Omit<ResumeData, 'id'> {
           name = potentialName;
         }
       }
+      
+      // Extract title from contact line if it has common job titles
+      if (!title && /engineer|developer|designer|manager|analyst|scientist|architect/i.test(line)) {
+        const titleMatch = line.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s*\([A-Z]+\)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/);
+        if (titleMatch && /engineer|developer|designer/i.test(titleMatch[0])) {
+          title = titleMatch[0].split(/www\.|http|linkedin|github/i)[0].trim();
+        }
+      }
       continue;
     }
     
-    // Skip very short or very long lines
     if (line.length < 3 || line.length > 100) continue;
+    if (/^\d{4}/.test(line) || /\d{4}\s*[-–—]\s*\d{4}/.test(line)) continue;
     
-    // Skip lines with mostly numbers/dates
-    if (/^\d{4}/.test(line) || /\d{4}\s*-\s*\d{4}/.test(line)) continue;
-    
-    // If we don't have a name yet, this is likely it
     if (!name) {
       name = line;
-    } 
-    // If we have name but no title, this might be the title
-    else if (!title && i <= 3) {
-      // Check if it looks like a job title (not too long, doesn't look like a section)
+    } else if (!title && i <= 3) {
       if (!line.includes('|') && !line.includes('–') && !line.includes('—')) {
         title = line;
         break;
@@ -113,26 +108,15 @@ export function parseResume(text: string): Omit<ResumeData, 'id'> {
     }
   }
   
-  // Extract summary/objective
   const summary = extractSummary(text);
-  
-  // Extract skills
   const skills = extractSkills(text);
-  console.log(`[Parser] Extracted ${skills.length} skills`);
-  
-  // Extract experience
   const experience = extractExperience(text);
-  console.log(`[Parser] Extracted ${experience.length} experiences`);
-  
-  // Extract projects
   const projects = extractProjects(text);
-  console.log(`[Parser] Extracted ${projects.length} projects`);
-  
-  // Extract education
   const education = extractEducation(text);
-  console.log(`[Parser] Extracted ${education.length} education entries`);
   
-  const result = {
+  console.log(`[Parser] Extracted ${skills.length} skills, ${experience.length} experiences, ${projects.length} projects, ${education.length} education entries`);
+  
+  return {
     name: name || 'Professional',
     title: title || undefined,
     email: emailMatch?.[0] || '',
@@ -146,17 +130,6 @@ export function parseResume(text: string): Omit<ResumeData, 'id'> {
     projects,
     education,
   };
-  
-  console.log('[Parser] Final result:', {
-    name: result.name,
-    title: result.title,
-    skillsCount: result.skills.length,
-    experienceCount: result.experience.length,
-    projectsCount: result.projects.length,
-    educationCount: result.education.length
-  });
-  
-  return result;
 }
 
 function extractSkills(text: string): string[] {
@@ -165,18 +138,19 @@ function extractSkills(text: string): string[] {
   const skills: string[] = [];
   
   if (skillsSection) {
-    // Common tech skills to look for
     const commonSkills = [
       'JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Ruby', 'Go', 'Rust', 'PHP', 'Swift', 'Kotlin',
       'React', 'Vue', 'Angular', 'Next.js', 'Nuxt', 'Svelte', 'Node.js', 'Express', 'Django', 'Flask', 'Spring', 'FastAPI',
-      'HTML', 'CSS', 'Tailwind', 'Bootstrap', 'SASS', 'SCSS', 'Material-UI', 'Chakra UI',
+      'HTML', 'CSS', 'Tailwind', 'Bootstrap', 'SASS', 'SCSS', 'Material-UI', 'Chakra UI', 'ShadCN',
       'MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Firebase', 'Supabase', 'DynamoDB', 'Cassandra',
       'AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Git', 'GitHub', 'GitLab', 'Vercel', 'Netlify',
       'REST', 'GraphQL', 'API', 'Microservices', 'CI/CD', 'Jenkins', 'GitHub Actions',
       'TensorFlow', 'PyTorch', 'Machine Learning', 'AI', 'Data Science', 'Pandas', 'NumPy',
-      'Redux', 'MobX', 'Zustand', 'React Query', 'SWR',
-      'Jest', 'Mocha', 'Cypress', 'Playwright', 'Testing Library',
-      'Webpack', 'Vite', 'Rollup', 'Babel', 'ESLint', 'Prettier',
+      'Redux', 'MobX', 'Zustand', 'React Query', 'SWR', 'Fiber', 'Colly', 'Drogon',
+      'Jest', 'Mocha', 'Cypress', 'Playwright', 'Testing Library', 'Supertest',
+      'Webpack', 'Vite', 'Rollup', 'Babel', 'ESLint', 'Prettier', 'Swagger', 'JWT',
+      'NoSQL', 'SQL', 'Vectara', 'OpenAI', 'OpenRouter', 'Hugging Face', 'Llama', 'Gemma', 'RAG',
+      'Matplotlib', 'Seaborn', 'Plotly', 'CLI Development', 'Bubble Tea'
     ];
     
     const lowerText = skillsSection.toLowerCase();
@@ -187,27 +161,24 @@ function extractSkills(text: string): string[] {
       }
     }
     
-    // Also split by common separators and add unique ones
     const separated = skillsSection
       .split(/[,;|•\n\t]/)
       .map(s => s.trim())
       .filter(s => {
-        // Filter valid skills
         return s && 
                s.length > 1 && 
                s.length < 30 && 
                !s.toLowerCase().includes('skills') &&
                !s.toLowerCase().includes('technologies') &&
-               !/^\d+$/.test(s) && // Not just numbers
+               !/^\d+$/.test(s) &&
                !skills.some(existing => existing.toLowerCase() === s.toLowerCase());
       });
     
     skills.push(...separated);
   }
   
-  // Also scan entire document for tech keywords if we don't have many skills
   if (skills.length < 5) {
-    const techKeywords = ['React', 'Node.js', 'Python', 'JavaScript', 'TypeScript', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker'];
+    const techKeywords = ['React', 'Node.js', 'Python', 'JavaScript', 'TypeScript', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Go'];
     for (const keyword of techKeywords) {
       if (text.includes(keyword) && !skills.includes(keyword)) {
         skills.push(keyword);
@@ -215,23 +186,20 @@ function extractSkills(text: string): string[] {
     }
   }
   
-  // Remove duplicates (case-insensitive) and limit
   const uniqueSkills = Array.from(new Map(
     skills.map(s => [s.toLowerCase(), s])
   ).values());
   
-  return uniqueSkills.slice(0, 25);
+  return uniqueSkills.slice(0, 30);
 }
 
 function extractSummary(text: string): string | undefined {
   const summarySection = extractSection(text, ['summary', 'objective', 'about', 'profile', 'professional summary']);
   if (!summarySection) return undefined;
   
-  // Clean up the summary
   const lines = summarySection.split('\n').map(l => l.trim()).filter(l => l);
   const summary = lines.join(' ').trim();
   
-  // Only return if it's a reasonable length
   if (summary.length > 20 && summary.length < 500) {
     return summary;
   }
@@ -244,26 +212,26 @@ function extractExperience(text: string): Experience[] {
   if (!experienceSection) return [];
   
   const experiences: Experience[] = [];
-  const lines = experienceSection.split('\n').map(l => l.trim()).filter(l => l && l.length > 2);
+  const lines = experienceSection.split('\n').map(l => l.trim()).filter(l => l);
   
   let currentExp: Partial<Experience> | null = null;
+  let i = 0;
   
-  for (let i = 0; i < lines.length; i++) {
+  while (i < lines.length) {
     const line = lines[i];
     
-    // Skip very short lines
-    if (line.length < 5) continue;
+    // Skip very short lines and standalone bullets
+    if (line.length < 3 || line === '•' || line === '-' || line === '*') {
+      i++;
+      continue;
+    }
     
-    // Check if this is a company/organization line (usually has location or ends with "Remote")
-    const hasLocation = /Remote$|India$|USA$|UK$|[A-Z][a-z]+,\s*[A-Z]/.test(line);
-    const isCompanyLine = hasLocation && !line.startsWith('•') && !line.startsWith('-');
+    // Check for company line (has "Remote" or location at end, or followed by position line)
+    const hasRemoteOrLocation = /Remote$|India$|USA$|UK$|,\s*[A-Z]{2}$/.test(line);
+    const nextLine = i + 1 < lines.length ? lines[i + 1] : '';
+    const nextLineHasPosition = nextLine && /engineer|developer|fellow|intern|manager|analyst|designer|architect/i.test(nextLine);
     
-    // Check if next line is a position line (has job title and dates)
-    const nextLine = lines[i + 1];
-    const hasDatePattern = /\d{4}|present|current|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec/i;
-    const isPositionLine = nextLine && hasDatePattern.test(nextLine) && !nextLine.startsWith('•');
-    
-    if (isCompanyLine && isPositionLine) {
+    if ((hasRemoteOrLocation || nextLineHasPosition) && !line.startsWith('•') && line !== '•') {
       // Save previous experience
       if (currentExp?.company && currentExp?.position) {
         experiences.push({
@@ -275,44 +243,56 @@ function extractExperience(text: string): Experience[] {
         });
       }
       
-      // Extract company and location
-      const companyParts = line.split(/[-–—]/);
-      const company = companyParts[0].trim();
-      const location = line.includes('Remote') ? 'Remote' : companyParts[companyParts.length - 1]?.trim();
+      // Parse company and location
+      const companyParts = line.split(/\s*[–—-]\s*(?=Remote|[A-Z][a-z]+,)/);
+      const company = companyParts[0].trim().replace(/Remote$/, '').trim();
+      const location = line.includes('Remote') ? 'Remote' : 
+                      companyParts[companyParts.length - 1] !== companyParts[0] ? companyParts[companyParts.length - 1].trim() : undefined;
       
-      // Move to next line for position
+      // Move to position line
       i++;
+      if (i >= lines.length) break;
       const positionLine = lines[i];
       
       // Extract position and duration
-      const positionParts = positionLine.split(/[-–—]/);
-      let position = positionParts[0].trim();
-      let duration = '';
+      const durationMatch = positionLine.match(/([A-Z][a-z]{2,8}\s+\d{4})\s*[–—-]\s*([A-Z][a-z]{2,8}\s+\d{4}|Present|Current)/i) ||
+                           positionLine.match(/(\d{4})\s*[–—-]\s*(\d{4}|Present|Current)/i);
       
-      // Find the duration pattern
-      const durationMatch = positionLine.match(/([A-Z][a-z]+\s+\d{4}\s*[-–—]\s*(?:[A-Z][a-z]+\s+\d{4}|Present|Current))/i);
-      if (durationMatch) {
-        duration = durationMatch[0];
-        // Remove duration from position
-        position = positionLine.replace(durationMatch[0], '').split(/[-–—]/)[0].trim();
-      }
+      let position = positionLine.split(/\s*[–—-]\s*(?=[A-Z][a-z]{2,8}\s+\d{4}|\d{4})/)[0].trim();
+      let duration = durationMatch ? durationMatch[0] : '';
       
       currentExp = {
         company,
         position,
         duration,
-        location: location !== company ? location : undefined,
+        location,
         description: []
       };
+      
+      i++;
+      continue;
     }
-    // Description bullet points
-    else if (currentExp && (line.startsWith('•') || line.startsWith('-') || line.startsWith('*') || line.startsWith('○'))) {
-      const cleaned = line.replace(/^[•\-*○]\s*/, '').trim();
-      if (cleaned.length > 10) {
+    
+    // Handle bullet points (can be on same line or next line after standalone bullet)
+    if (currentExp) {
+      let bulletContent = '';
+      
+      // Case 1: Line starts with bullet character
+      if (/^[•\-*○\u2022\u2023\u2043\u25E6\u25AA\u25AB\u25CF]/.test(line)) {
+        bulletContent = line.replace(/^[•\-*○\u2022\u2023\u2043\u25E6\u25AA\u25AB\u25CF]\s*/, '').trim();
+      }
+      // Case 2: Previous line was standalone bullet, this is the content
+      else if (i > 0 && (lines[i - 1] === '•' || lines[i - 1] === '-' || lines[i - 1] === '*')) {
+        bulletContent = line;
+      }
+      
+      if (bulletContent && bulletContent.length > 5) {
         if (!currentExp.description) currentExp.description = [];
-        currentExp.description.push(cleaned);
+        currentExp.description.push(bulletContent);
       }
     }
+    
+    i++;
   }
   
   // Add last experience
@@ -334,20 +314,28 @@ function extractProjects(text: string): Project[] {
   if (!projectsSection) return [];
   
   const projects: Project[] = [];
-  const lines = projectsSection.split('\n').map(l => l.trim()).filter(l => l && l.length > 2);
+  const lines = projectsSection.split('\n').map(l => l.trim()).filter(l => l);
   
   let currentProject: Partial<Project> | null = null;
+  let i = 0;
   
-  for (let i = 0; i < lines.length; i++) {
+  while (i < lines.length) {
     const line = lines[i];
     
-    const hasTechStack = line.includes('|') && !line.startsWith('•');
-    const hasLink = /Live|GitHub|Demo|Link/i.test(line);
-    const isProjectTitle = !line.startsWith('•') && !line.startsWith('-') && (hasTechStack || hasLink || line.length < 100);
+    // Skip standalone bullets and very short lines
+    if (line.length < 3 || line === '•' || line === '-' || line === '*') {
+      i++;
+      continue;
+    }
     
-    if (isProjectTitle && !line.toLowerCase().includes('skill')) {
+    // Project title: has pipe separator OR doesn't start with bullet and is followed by bullets
+    const hasPipeSeparator = line.includes('|') && !line.startsWith('•') && !/^[•\-*○\u2022\u2023\u2043\u25E6\u25AA\u25AB\u25CF]/.test(line);
+    const nextLineIsBullet = i + 1 < lines.length && (lines[i + 1] === '•' || lines[i + 1].startsWith('•'));
+    const isProjectTitle = (hasPipeSeparator || nextLineIsBullet) && !line.toLowerCase().includes('skill');
+    
+    if (isProjectTitle) {
       // Save previous project
-      if (currentProject?.name && (currentProject.description || currentProject.technologies?.length)) {
+      if (currentProject?.name) {
         projects.push({
           name: currentProject.name,
           description: currentProject.description || '',
@@ -356,33 +344,35 @@ function extractProjects(text: string): Project[] {
         });
       }
       
-      // Parse new project
       let projectName = line;
       let technologies: string[] = [];
       let projectLink = '';
       
-      // Extract technologies from the title line (usually after |)
+      // Extract technologies and links from pipe-separated format
       if (line.includes('|')) {
         const parts = line.split('|');
         projectName = parts[0].trim();
         
-        // Second part usually contains technologies
-        if (parts[1]) {
-          technologies = parts[1]
-            .split(/[,;]/)
-            .map(t => t.trim())
-            .filter(t => t.length > 1 && t.length < 30 && !t.includes('http'));
+        // Process remaining parts for technologies and links
+        for (let j = 1; j < parts.length; j++) {
+          const part = parts[j].trim();
+          
+          // Check if this part contains link keywords
+          if (/Live|GitHub|Demo|Link|Code|Video|Documentation/i.test(part)) {
+            if (!projectLink) projectLink = part;
+          }
+          // Otherwise, treat as technologies
+          else {
+            const techs = part
+              .split(/[,;]/)
+              .map(t => t.trim())
+              .filter(t => t.length > 1 && t.length < 30 && !t.includes('http'));
+            technologies.push(...techs);
+          }
         }
       }
       
-      // Extract link from title line
-      const linkMatch = line.match(/\b(Live|GitHub|Demo)\b/i);
-      if (linkMatch) {
-        projectLink = linkMatch[0];
-        projectName = projectName.replace(linkMatch[0], '').trim();
-      }
-      
-      // Remove any trailing punctuation
+      // Remove trailing punctuation from project name
       projectName = projectName.replace(/[-–—|]+$/, '').trim();
       
       currentProject = {
@@ -391,45 +381,62 @@ function extractProjects(text: string): Project[] {
         technologies: technologies,
         link: projectLink || undefined
       };
-    } 
-    // Description bullets
-    else if (currentProject && (line.startsWith('•') || line.startsWith('-') || line.startsWith('*') || line.startsWith('○'))) {
-      const cleaned = line.replace(/^[•\-*○]\s*/, '').trim();
       
-      // Check if this bullet contains technologies
-      const techIndicators = /technologies|tech stack|built with|using|tools|frameworks/i;
-      if (techIndicators.test(cleaned)) {
-        const techMatch = cleaned.match(/(?:technologies|tech stack|built with|using|tools|frameworks)[:\s]+(.*)/i);
-        if (techMatch) {
-          const techs = techMatch[1]
-            .split(/[,;|&]/)
-            .map(t => t.trim())
-            .filter(t => t.length > 1 && t.length < 30);
-          currentProject.technologies = [...(currentProject.technologies || []), ...techs];
+      i++;
+      continue;
+    }
+    
+    // Handle bullet points for project descriptions
+    if (currentProject) {
+      let bulletContent = '';
+      
+      // Case 1: Line starts with bullet
+      if (/^[•\-*○\u2022\u2023\u2043\u25E6\u25AA\u25AB\u25CF]/.test(line)) {
+        bulletContent = line.replace(/^[•\-*○\u2022\u2023\u2043\u25E6\u25AA\u25AB\u25CF]\s*/, '').trim();
+      }
+      // Case 2: Previous line was standalone bullet
+      else if (i > 0 && (lines[i - 1] === '•' || lines[i - 1] === '-' || lines[i - 1] === '*')) {
+        bulletContent = line;
+      }
+      
+      if (bulletContent && bulletContent.length > 10) {
+        // Check for technologies in description
+        const techIndicators = /technologies|tech stack|built with|using|tools|frameworks/i;
+        if (techIndicators.test(bulletContent)) {
+          const techMatch = bulletContent.match(/(?:technologies|tech stack|built with|using|tools|frameworks)[:\s]+(.*)/i);
+          if (techMatch) {
+            const techs = techMatch[1]
+              .split(/[,;|&]/)
+              .map(t => t.trim())
+              .filter(t => t.length > 1 && t.length < 30);
+            currentProject.technologies = [...(currentProject.technologies || []), ...techs];
+          }
         }
-      } else if (cleaned.length > 15) {
+        
         // Add to description
         currentProject.description = currentProject.description 
-          ? `${currentProject.description} ${cleaned}` 
-          : cleaned;
-      }
-      
-      // Check for links in description
-      const urlMatch = cleaned.match(/(https?:\/\/[^\s]+)/);
-      if (urlMatch && !currentProject.link) {
-        currentProject.link = urlMatch[0];
-      }
-      
-      // Check for link keywords
-      const linkKeywordMatch = cleaned.match(/\b(Live|GitHub|Demo|Documentation|Code|Video|Link)\b/i);
-      if (linkKeywordMatch && !currentProject.link) {
-        currentProject.link = linkKeywordMatch[0];
+          ? `${currentProject.description} ${bulletContent}` 
+          : bulletContent;
+        
+        // Extract URLs from description
+        const urlMatch = bulletContent.match(/(https?:\/\/[^\s]+)/);
+        if (urlMatch && !currentProject.link) {
+          currentProject.link = urlMatch[0];
+        }
+        
+        // Extract link keywords from description
+        const linkMatch = bulletContent.match(/\b(Live|GitHub|Demo|Documentation|Code|Video|Link)\b/i);
+        if (linkMatch && !currentProject.link) {
+          currentProject.link = linkMatch[0];
+        }
       }
     }
+    
+    i++;
   }
   
   // Add last project
-  if (currentProject?.name && (currentProject.description || currentProject.technologies?.length)) {
+  if (currentProject?.name) {
     projects.push({
       name: currentProject.name,
       description: currentProject.description || '',
@@ -438,10 +445,15 @@ function extractProjects(text: string): Project[] {
     });
   }
   
-  // If no technologies found in structure, extract from description
+  // Extract technologies from description if none found
   projects.forEach(project => {
     if (project.technologies.length === 0 && project.description) {
-      const commonTech = ['React', 'Node', 'Python', 'Java', 'TypeScript', 'JavaScript', 'Go', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Next.js', 'Redis', 'Express'];
+      const commonTech = [
+        'React', 'Node', 'Python', 'Java', 'TypeScript', 'JavaScript', 'Go', 'C++',
+        'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Next.js', 'Redis', 'Express', 
+        'Fiber', 'Colly', 'Bubble Tea', 'OpenAI', 'GraphQL', 'JWT', 'Gemma', 
+        'Vectara', 'RAG', 'Llama', 'NoSQL', 'Swagger', 'Drogon'
+      ];
       project.technologies = commonTech.filter(tech => 
         project.description.toLowerCase().includes(tech.toLowerCase())
       );
@@ -463,17 +475,15 @@ function extractEducation(text: string): Education[] {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     
-    // Skip section headers
     if (line.toLowerCase() === 'education') continue;
     
-    // Institution line: usually longer, doesn't start with bullet, may have location
+    // Institution line: longer, doesn't start with degree keyword
     const isInstitutionLine = !line.startsWith('•') && 
-                               !line.startsWith('-') && 
-                               !line.startsWith('*') &&
                                line.length > 10 &&
-                               !/^(bachelor|master|phd|b\.tech|m\.tech|b\.sc|m\.sc|diploma)/i.test(line);
+                               !/^(bachelor|master|phd|b\.tech|m\.tech|b\.sc|m\.sc|diploma|undergraduate|graduate)/i.test(line) &&
+                               !/\|\s*\d/.test(line); // Not a degree line with pipe and numbers
     
-    if (isInstitutionLine && !line.includes('|')) {
+    if (isInstitutionLine) {
       // Save previous education
       if (currentEdu?.institution && currentEdu?.degree) {
         education.push({
@@ -486,14 +496,17 @@ function extractEducation(text: string): Education[] {
         });
       }
       
-      // Parse institution name (may include location)
       let institution = line;
+      let location = '';
       
-      // Remove common location indicators at end
-      const locationPatterns = /[-–—,]\s*(Remote|India|USA|UK|[A-Z][a-z]+,\s*[A-Z]{2})\s*$/;
-      institution = institution.replace(locationPatterns, '').trim();
+      // Extract location from end of institution line
+      const locationMatch = line.match(/,\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),?\s*([A-Z][a-z]+|India|USA|UK)$/);
+      if (locationMatch) {
+        location = locationMatch[0].trim();
+        institution = line.replace(locationMatch[0], '').trim();
+      }
       
-      // Remove dates at end if present
+      // Remove dates if present
       institution = institution.replace(/\d{4}\s*[-–—]\s*\d{4}$/, '').trim();
       institution = institution.replace(/\d{4}\s*[-–—]\s*Present$/i, '').trim();
       
@@ -502,11 +515,11 @@ function extractEducation(text: string): Education[] {
         degree: '',
         duration: '',
         field: '',
-        location: undefined,
+        location: location || undefined,
         gpa: undefined
       };
     }
-    // Degree line: usually has degree type, may have CGPA and dates
+    // Degree line
     else if (currentEdu && (
       /bachelor|master|phd|b\.tech|m\.tech|b\.sc|m\.sc|diploma|undergraduate|graduate/i.test(line) ||
       line.includes('|') ||
@@ -517,38 +530,32 @@ function extractEducation(text: string): Education[] {
       let gpa = '';
       let duration = '';
       
-      // Extract CGPA/GPA (pattern: CGPA: 8.5 or GPA 3.8 or 85%)
-      const cgpaMatch = line.match(/(?:cgpa|gpa)[:\s]*([\d.]+)|(\d+\.\d+)\s*\/\s*(\d+)|(\d+)%/i);
+      // Extract CGPA (format: "| 8.2 CGPA" or "8.2 CGPA" or "CGPA: 8.2")
+      const cgpaMatch = line.match(/(\d+\.\d+)\s*CGPA|CGPA[:\s]*(\d+\.\d+)|GPA[:\s]*(\d+\.\d+)|(\d+)%/i);
       if (cgpaMatch) {
-        if (cgpaMatch[1]) {
-          gpa = cgpaMatch[1];
-        } else if (cgpaMatch[2]) {
-          gpa = `${cgpaMatch[2]}/${cgpaMatch[3]}`;
-        } else if (cgpaMatch[4]) {
-          gpa = `${cgpaMatch[4]}%`;
-        }
-        // Remove CGPA from degree string
-        degree = degree.replace(/\s*(?:cgpa|gpa)[:\s]*[\d.]+(?:\/[\d.]+)?/i, '').trim();
-        degree = degree.replace(/\s*\d+%/, '').trim();
+        gpa = cgpaMatch[1] || cgpaMatch[2] || cgpaMatch[3] || (cgpaMatch[4] ? `${cgpaMatch[4]}%` : '');
+        // Remove CGPA from rest of line
+        degree = degree.replace(/\|\s*\d+\.\d+\s*CGPA|\d+\.\d+\s*CGPA|CGPA[:\s]*\d+\.\d+|GPA[:\s]*\d+\.\d+|\d+%/i, '').trim();
       }
       
-      // Extract duration (pattern: 2020-2024 or Aug 2020 - May 2024)
-      const durationMatch = line.match(/(\w+\s+)?\d{4}\s*[-–—]\s*(\w+\s+)?\d{4}|(\w+\s+)?\d{4}\s*[-–—]\s*Present/i);
+      // Extract duration
+      const durationMatch = line.match(/([A-Z][a-z]{2,8}\s+\d{4})\s*[–—-]\s*([A-Z][a-z]{2,8}\s+\d{4}|Present|Current)/i) ||
+                           line.match(/(\d{4})\s*[–—-]\s*(\d{4}|Present|Current)/i);
       if (durationMatch) {
         duration = durationMatch[0];
-        // Remove duration from degree string
         degree = degree.replace(durationMatch[0], '').trim();
       }
       
-      // If line has | separator, split by it (common format: Degree | CGPA | Dates)
+      // Handle pipe separator
       if (degree.includes('|')) {
         const parts = degree.split('|').map(p => p.trim());
-        degree = parts[0]; // First part is usually the degree
+        degree = parts[0];
         
-        // Check other parts for CGPA or duration
+        // Check other parts for GPA or duration
         parts.slice(1).forEach(part => {
-          if (/cgpa|gpa|\d+\.\d+/.test(part.toLowerCase()) && !gpa) {
-            gpa = part.replace(/cgpa|gpa/i, '').trim().replace(/^:\s*/, '');
+          const partGpaMatch = part.match(/(\d+\.\d+)|(\d+)%/);
+          if (partGpaMatch && !gpa) {
+            gpa = partGpaMatch[0];
           } else if (/\d{4}/.test(part) && !duration) {
             duration = part;
           }
@@ -564,12 +571,6 @@ function extractEducation(text: string): Education[] {
         if (gpa) currentEdu.gpa = gpa;
         if (duration) currentEdu.duration = duration;
       }
-    }
-    // Additional info bullets (coursework, achievements, etc.)
-    else if (currentEdu && (line.startsWith('•') || line.startsWith('-') || line.startsWith('*'))) {
-      // We can add coursework or achievements if needed
-      // For now, we'll skip these
-      continue;
     }
   }
   
@@ -593,7 +594,6 @@ function extractSection(text: string, headers: string[]): string | null {
   let sectionStart = -1;
   let sectionEnd = lines.length;
   
-  // Find section start
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].toLowerCase().trim();
     if (headers.some(header => line.includes(header))) {
@@ -604,8 +604,7 @@ function extractSection(text: string, headers: string[]): string | null {
   
   if (sectionStart === -1) return null;
   
-  // Find section end (next major section)
-  const commonHeaders = ['experience', 'education', 'skills', 'projects', 'certifications', 'awards'];
+  const commonHeaders = ['experience', 'education', 'skills', 'projects', 'certifications', 'awards', 'technical skills'];
   for (let i = sectionStart; i < lines.length; i++) {
     const line = lines[i].toLowerCase().trim();
     if (commonHeaders.some(header => line === header || line.startsWith(header + ':'))) {
@@ -615,18 +614,4 @@ function extractSection(text: string, headers: string[]): string | null {
   }
   
   return lines.slice(sectionStart, sectionEnd).join('\n');
-}
-
-function extractDuration(text: string): string | null {
-  const match = text.match(/(\w+\s+\d{4})\s*[-–—]\s*(\w+\s+\d{4}|present|current)/i);
-  if (match) {
-    return `${match[1]} - ${match[2]}`;
-  }
-  
-  const yearMatch = text.match(/\d{4}\s*[-–—]\s*(\d{4}|present|current)/i);
-  if (yearMatch) {
-    return yearMatch[0];
-  }
-  
-  return null;
 }
