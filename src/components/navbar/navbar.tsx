@@ -29,6 +29,11 @@ export function Navbar() {
                 Examples
               </PixelButton>
             </Link>
+            <Link href="/patterns">
+              <PixelButton variant="ghost" size="sm">
+                Patterns
+              </PixelButton>
+            </Link>
           </div>
 
           {/* Social Links & Theme Toggle */}

@@ -11,6 +11,7 @@
 ## Anas Khan (Github Username - ANAS727189)
 - Created 10 unique special components not found in any other UI library (PixelLoader, PixelTerminal, PixelGameUI, PixelWindow, PixelAudioVisualizer, PixelCodeBlock, PixelTimeline, PixelNotification, PixelChat, PixelCountdown) with 60+ interactive example pages.
 - Built 10 comprehensive layout components from hero section to FAQ section (PixelHero, PixelBento, PixelFeatures, PixelCta, PixelPricing, PixelFooter, PixelTestimonials, PixelStats, PixelFaq) with multiple variants and full documentation.
+- Created complete "Retro Game Central" patterns page showcasing all 10 special components in a real-world gaming platform with player dashboard, inventory system, live chat, terminal, and audio visualizer.
 - Fixed critical UI issues across homepage and documentation pages, improved component responsiveness and accessibility.
 - Fixed glitch text component RGB split effect rendering to properly display animations without duplicate text artifacts.
 - Made parts of the Treasure hunt website that was used in IIIT Dharwad's Tech Fest and had 200 live users.(170K requests, 5k+ visits)
