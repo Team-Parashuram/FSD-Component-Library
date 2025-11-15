@@ -21,7 +21,7 @@ export default function FooterExamples() {
   return (
     <div className="space-y-32 pb-16">
       <div className="container mx-auto px-4 py-16 text-center space-y-4">
-        <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-wider font-[family-name:var(--font-pixel)]">
+        <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-wider font-pixel">
           Footer Examples
         </h1>
         <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
@@ -32,7 +32,7 @@ export default function FooterExamples() {
       {/* Example 1: Complete Footer with 4 Columns */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             1. Complete 4-Column Footer
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -45,40 +45,40 @@ export default function FooterExamples() {
             <PixelFooterSection>
               <PixelFooterTitle>Product</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Features</PixelFooterLink>
-                <PixelFooterLink href="#">Pricing</PixelFooterLink>
-                <PixelFooterLink href="#">Changelog</PixelFooterLink>
-                <PixelFooterLink href="#">Roadmap</PixelFooterLink>
+                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Changelog</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Roadmap</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Company</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">About Us</PixelFooterLink>
-                <PixelFooterLink href="#">Blog</PixelFooterLink>
-                <PixelFooterLink href="#">Careers</PixelFooterLink>
-                <PixelFooterLink href="#">Press Kit</PixelFooterLink>
+                <PixelFooterLink><a href="#">About Us</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Careers</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Press Kit</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Resources</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Documentation</PixelFooterLink>
-                <PixelFooterLink href="#">Guides</PixelFooterLink>
-                <PixelFooterLink href="#">API Reference</PixelFooterLink>
-                <PixelFooterLink href="#">Support</PixelFooterLink>
+                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Guides</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">API Reference</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Support</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Legal</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Privacy Policy</PixelFooterLink>
-                <PixelFooterLink href="#">Terms of Service</PixelFooterLink>
-                <PixelFooterLink href="#">Cookie Policy</PixelFooterLink>
-                <PixelFooterLink href="#">License</PixelFooterLink>
+                <PixelFooterLink><a href="#">Privacy Policy</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Terms of Service</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Cookie Policy</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">License</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
@@ -88,10 +88,10 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2024 Pixel UI. All rights reserved.</PixelFooterCopyright>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="📘" />
-              <PixelFooterSocialLink href="#" icon="💼" />
-              <PixelFooterSocialLink href="#" icon="📷" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">💼</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📷</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>
@@ -100,7 +100,7 @@ export default function FooterExamples() {
       {/* Example 2: Footer with Logo and Description */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             2. Footer with Logo Section
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -120,27 +120,27 @@ export default function FooterExamples() {
             <PixelFooterSection>
               <PixelFooterTitle>Quick Links</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Home</PixelFooterLink>
-                <PixelFooterLink href="#">Components</PixelFooterLink>
-                <PixelFooterLink href="#">Examples</PixelFooterLink>
+                <PixelFooterLink><a href="#">Home</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Components</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Examples</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Support</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Help Center</PixelFooterLink>
-                <PixelFooterLink href="#">Contact</PixelFooterLink>
-                <PixelFooterLink href="#">Status</PixelFooterLink>
+                <PixelFooterLink><a href="#">Help Center</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Status</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Connect</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Twitter</PixelFooterLink>
-                <PixelFooterLink href="#">GitHub</PixelFooterLink>
-                <PixelFooterLink href="#">Discord</PixelFooterLink>
+                <PixelFooterLink><a href="#">Twitter</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">GitHub</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Discord</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
@@ -150,8 +150,8 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>Made with ❤️ by Pixel UI Team</PixelFooterCopyright>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="🐙" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">🐙</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>
@@ -160,7 +160,7 @@ export default function FooterExamples() {
       {/* Example 3: Compact Footer */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             3. Compact Footer
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -172,13 +172,13 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2024 Pixel UI</PixelFooterCopyright>
             <div className="flex gap-4">
-              <PixelFooterLink href="#">Privacy</PixelFooterLink>
-              <PixelFooterLink href="#">Terms</PixelFooterLink>
-              <PixelFooterLink href="#">Contact</PixelFooterLink>
+              <PixelFooterLink><a href="#">Privacy</a></PixelFooterLink>
+              <PixelFooterLink><a href="#">Terms</a></PixelFooterLink>
+              <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
             </div>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="💼" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">💼</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>
@@ -187,7 +187,7 @@ export default function FooterExamples() {
       {/* Example 4: Dark Footer */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             4. Dark Footer Variant
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -207,27 +207,27 @@ export default function FooterExamples() {
             <PixelFooterSection>
               <PixelFooterTitle>Platform</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Overview</PixelFooterLink>
-                <PixelFooterLink href="#">Features</PixelFooterLink>
-                <PixelFooterLink href="#">Pricing</PixelFooterLink>
+                <PixelFooterLink><a href="#">Overview</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Developers</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Documentation</PixelFooterLink>
-                <PixelFooterLink href="#">API</PixelFooterLink>
-                <PixelFooterLink href="#">SDKs</PixelFooterLink>
+                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">API</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">SDKs</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Community</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Forum</PixelFooterLink>
-                <PixelFooterLink href="#">Discord</PixelFooterLink>
-                <PixelFooterLink href="#">Events</PixelFooterLink>
+                <PixelFooterLink><a href="#">Forum</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Discord</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Events</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
@@ -237,9 +237,9 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2024 Retro App. Powered by Pixel UI.</PixelFooterCopyright>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="📘" />
-              <PixelFooterSocialLink href="#" icon="💬" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">💬</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>
@@ -248,7 +248,7 @@ export default function FooterExamples() {
       {/* Example 5: Primary Footer */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             5. Primary Branded Footer
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -268,30 +268,30 @@ export default function FooterExamples() {
             <PixelFooterSection>
               <PixelFooterTitle>Products</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">UI Kit</PixelFooterLink>
-                <PixelFooterLink href="#">Icons</PixelFooterLink>
-                <PixelFooterLink href="#">Templates</PixelFooterLink>
-                <PixelFooterLink href="#">Animations</PixelFooterLink>
+                <PixelFooterLink><a href="#">UI Kit</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Icons</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Templates</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Animations</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Resources</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Blog</PixelFooterLink>
-                <PixelFooterLink href="#">Tutorials</PixelFooterLink>
-                <PixelFooterLink href="#">Newsletter</PixelFooterLink>
-                <PixelFooterLink href="#">Community</PixelFooterLink>
+                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Tutorials</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Newsletter</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Community</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Company</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">About</PixelFooterLink>
-                <PixelFooterLink href="#">Careers</PixelFooterLink>
-                <PixelFooterLink href="#">Partners</PixelFooterLink>
-                <PixelFooterLink href="#">Contact</PixelFooterLink>
+                <PixelFooterLink><a href="#">About</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Careers</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Partners</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Contact</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
@@ -301,11 +301,11 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2024 Pixel Studio. All rights reserved.</PixelFooterCopyright>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="📘" />
-              <PixelFooterSocialLink href="#" icon="💼" />
-              <PixelFooterSocialLink href="#" icon="📷" />
-              <PixelFooterSocialLink href="#" icon="🎮" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">💼</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📷</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">🎮</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>
@@ -314,7 +314,7 @@ export default function FooterExamples() {
       {/* Example 6: Secondary Footer */}
       <section className="space-y-8">
         <div className="container mx-auto px-4 space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             6. Secondary Gold Footer
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -334,27 +334,27 @@ export default function FooterExamples() {
             <PixelFooterSection>
               <PixelFooterTitle>Solutions</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Enterprise</PixelFooterLink>
-                <PixelFooterLink href="#">Startups</PixelFooterLink>
-                <PixelFooterLink href="#">Agencies</PixelFooterLink>
+                <PixelFooterLink><a href="#">Enterprise</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Startups</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Agencies</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Learn</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Documentation</PixelFooterLink>
-                <PixelFooterLink href="#">Video Tutorials</PixelFooterLink>
-                <PixelFooterLink href="#">Best Practices</PixelFooterLink>
+                <PixelFooterLink><a href="#">Documentation</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Video Tutorials</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Best Practices</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
             
             <PixelFooterSection>
               <PixelFooterTitle>Support</PixelFooterTitle>
               <PixelFooterLinks>
-                <PixelFooterLink href="#">Help Center</PixelFooterLink>
-                <PixelFooterLink href="#">Contact Us</PixelFooterLink>
-                <PixelFooterLink href="#">FAQ</PixelFooterLink>
+                <PixelFooterLink><a href="#">Help Center</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Contact Us</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">FAQ</a></PixelFooterLink>
               </PixelFooterLinks>
             </PixelFooterSection>
           </PixelFooterGrid>
@@ -364,8 +364,8 @@ export default function FooterExamples() {
           <PixelFooterBottom>
             <PixelFooterCopyright>© 2024 Premium Pixels Inc.</PixelFooterCopyright>
             <PixelFooterSocial>
-              <PixelFooterSocialLink href="#" icon="🐦" />
-              <PixelFooterSocialLink href="#" icon="📘" />
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">📘</PixelFooterSocialLink>
             </PixelFooterSocial>
           </PixelFooterBottom>
         </PixelFooter>

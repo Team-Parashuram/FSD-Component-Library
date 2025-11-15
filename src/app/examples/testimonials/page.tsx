@@ -19,7 +19,7 @@ export default function TestimonialsExamples() {
   return (
     <div className="container mx-auto px-4 py-16 space-y-32">
       <div className="text-center space-y-4">
-        <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-wider font-[family-name:var(--font-pixel)]">
+        <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-wider font-pixel">
           Testimonials Examples
         </h1>
         <p className="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
@@ -30,7 +30,7 @@ export default function TestimonialsExamples() {
       {/* Example 1: Basic 3-Column */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             1. Basic 3-Column Testimonials
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -40,7 +40,7 @@ export default function TestimonialsExamples() {
         
         <PixelTestimonials columns={3} gap="md">
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "This component library completely transformed our design workflow. The pixel-art aesthetic is absolutely perfect for our retro gaming platform!"
             </PixelTestimonialQuote>
@@ -54,7 +54,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="primary">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Easy to use, highly customizable, and the documentation is excellent. Our team shipped features faster than ever before."
             </PixelTestimonialQuote>
@@ -68,7 +68,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={4} />
+            <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The attention to detail is remarkable. Every component feels thoughtfully crafted and production-ready out of the box."
             </PixelTestimonialQuote>
@@ -86,7 +86,7 @@ export default function TestimonialsExamples() {
       {/* Example 2: With Header */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             2. Testimonials with Header
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -103,7 +103,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialsHeader>
           
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The best pixel-art component library I've ever used. Makes building retro interfaces a breeze!"
             </PixelTestimonialQuote>
@@ -117,7 +117,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="secondary">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Saved us months of development time. The components are well-documented and easy to customize."
             </PixelTestimonialQuote>
@@ -131,7 +131,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Finally, a component library that perfectly captures the retro aesthetic we were looking for!"
             </PixelTestimonialQuote>
@@ -149,7 +149,7 @@ export default function TestimonialsExamples() {
       {/* Example 3: 2-Column Layout */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             3. Two-Column Layout
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -159,7 +159,7 @@ export default function TestimonialsExamples() {
         
         <PixelTestimonials columns={2} gap="lg">
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "We've been using Pixel UI for our retro gaming marketplace and it's been incredible. The components are not only beautiful but also incredibly functional. Our users love the nostalgic feel, and we love how easy it is to maintain."
             </PixelTestimonialQuote>
@@ -173,7 +173,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="primary">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The pixel-perfect borders and instant state changes give our app the authentic retro feel we wanted. Plus, the TypeScript support and accessibility features are top-notch. Highly recommended for any retro-themed project!"
             </PixelTestimonialQuote>
@@ -191,7 +191,7 @@ export default function TestimonialsExamples() {
       {/* Example 4: Single Column */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             4. Featured Single Column
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -201,7 +201,7 @@ export default function TestimonialsExamples() {
         
         <PixelTestimonials columns={1} gap="none" className="max-w-3xl mx-auto">
           <PixelTestimonialCard variant="dark">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Pixel UI has become an essential part of our design system. The components are not only visually stunning with their retro aesthetic, but they're also incredibly well-built under the hood. The attention to accessibility, TypeScript support, and comprehensive documentation makes this the gold standard for pixel-art UI libraries. Our entire team is in love with it, and our users can't stop complimenting the design!"
             </PixelTestimonialQuote>
@@ -219,7 +219,7 @@ export default function TestimonialsExamples() {
       {/* Example 5: Dark Section */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             5. Dark Section with Testimonials
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -236,7 +236,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialsHeader>
           
           <PixelTestimonialCard variant="dark">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The best investment we made for our project. Clean, professional, and perfectly retro."
             </PixelTestimonialQuote>
@@ -250,7 +250,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="dark">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Outstanding quality and support. Made our retro app look professional from day one."
             </PixelTestimonialQuote>
@@ -264,7 +264,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="dark">
-            <PixelTestimonialRating rating={4} />
+            <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Great components with excellent documentation. Helped us ship our MVP in record time."
             </PixelTestimonialQuote>
@@ -282,7 +282,7 @@ export default function TestimonialsExamples() {
       {/* Example 6: Mixed Variants */}
       <section className="space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold uppercase tracking-wide font-[family-name:var(--font-pixel)]">
+          <h2 className="text-3xl font-bold uppercase tracking-wide font-pixel">
             6. Mixed Card Variants
           </h2>
           <p className="text-black/60 dark:text-white/60">
@@ -292,7 +292,7 @@ export default function TestimonialsExamples() {
         
         <PixelTestimonials columns={3} gap="md">
           <PixelTestimonialCard variant="default">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "Clean, simple, and effective. Perfect for our minimalist design approach."
             </PixelTestimonialQuote>
@@ -306,7 +306,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="primary">
-            <PixelTestimonialRating rating={5} />
+            <PixelTestimonialRating>⭐⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The orange accents add just the right amount of energy to our design system!"
             </PixelTestimonialQuote>
@@ -320,7 +320,7 @@ export default function TestimonialsExamples() {
           </PixelTestimonialCard>
           
           <PixelTestimonialCard variant="secondary">
-            <PixelTestimonialRating rating={4} />
+            <PixelTestimonialRating>⭐⭐⭐⭐</PixelTestimonialRating>
             <PixelTestimonialQuote>
               "The gold variant is perfect for our premium tier features. Love the flexibility!"
             </PixelTestimonialQuote>
