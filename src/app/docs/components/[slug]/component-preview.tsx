@@ -175,7 +175,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
     
     case "pixel-bento":
       return (
-        <PixelBentoGrid columns={3} gap="md" className="w-full">
+        <PixelBentoGrid columns={3} className="w-full">
           <PixelBentoItem span={2} variant="primary">
             <PixelBentoHeader>
               <PixelBentoIcon>🎮</PixelBentoIcon>

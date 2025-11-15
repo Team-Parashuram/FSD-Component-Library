@@ -60,7 +60,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={3} gap="md">
+            <PixelBentoGrid columns={3}>
               <PixelBentoItem hover="lift">
                 <PixelBentoHeader>
                   <PixelBentoIcon>🎮</PixelBentoIcon>
@@ -98,7 +98,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={3} gap="lg">
+            <PixelBentoGrid columns={3}>
               <PixelBentoItem span={2} rowSpan={2} variant="primary" hover="lift">
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
@@ -141,7 +141,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={2} gap="md">
+            <PixelBentoGrid columns={2}>
               <PixelBentoItem variant="gradient" hover="lift">
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
@@ -186,7 +186,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={4} gap="md">
+            <PixelBentoGrid columns={4}>
               <PixelBentoItem span={2} variant="primary" hover="glow">
                 <PixelBentoHeader>
                   <PixelBentoIcon>📈</PixelBentoIcon>
@@ -244,7 +244,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={3} gap="lg">
+            <PixelBentoGrid columns={3}>
               <PixelBentoItem span={2} variant="gradient" hover="lift">
                 <PixelBentoPattern pattern="dots" />
                 <PixelBentoHeader>
@@ -285,7 +285,7 @@ export default function BentoExamplesPage() {
           </div>
           
           <div className="container mx-auto px-4">
-            <PixelBentoGrid columns={3} gap="md">
+            <PixelBentoGrid columns={3}>
               <PixelBentoItem variant="primary" hover="lift">
                 <PixelBentoIcon>✅</PixelBentoIcon>
                 <PixelBentoTitle>Active Feature</PixelBentoTitle>
