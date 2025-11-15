@@ -68,13 +68,15 @@ export function PixelToastProvider({
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className="pixel-borders border-4 border-black bg-[#fffacd] p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] min-w-[300px] dark:border-[#ff8c00] dark:bg-[#1a1a1a] dark:shadow-[6px_6px_0px_0px_rgba(255,140,0,0.3)] animate-in slide-in-from-right-full duration-0"
+            className="pixel-borders border-4 border-black bg-pixel-light-surface p-4 shadow-pixel-lg min-w-[300px] dark:border-[#ff8c00] dark:bg-pixel-dark-surface dark:shadow-[6px_6px_0px_0px_rgba(255,140,0,0.3)] animate-in slide-in-from-right-full duration-0"
           >
             <div className="flex items-start justify-between gap-4">
               <p className="text-sm font-medium flex-1">{toast.message}</p>
               <button
                 onClick={() => removeToast(toast.id)}
                 className="pixel-borders border-2 border-black p-1 hover:bg-black/10 dark:border-[#ff8c00] dark:hover:bg-white/10 transition-none duration-0"
+                aria-label="Close toast notification"
+                title="Close"
               >
                 <X className="h-3 w-3" />
               </button>

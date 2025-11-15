@@ -574,7 +574,23 @@ toast({
     category: "Overlays",
     installation: "npm install @radix-ui/react-alert-dialog",
     importCode: `import { PixelAlertDialog, PixelAlertDialogTrigger, PixelAlertDialogContent, PixelAlertDialogHeader, PixelAlertDialogTitle, PixelAlertDialogDescription, PixelAlertDialogFooter, PixelAlertDialogCancel, PixelAlertDialogAction } from "@/components/ui/pixel-alert-dialog"`,
-    usageCode: `// See examples`,
+    usageCode: `<PixelAlertDialog>
+  <PixelAlertDialogTrigger asChild>
+    <PixelButton variant="destructive">Delete</PixelButton>
+  </PixelAlertDialogTrigger>
+  <PixelAlertDialogContent>
+    <PixelAlertDialogHeader>
+      <PixelAlertDialogTitle>Are you sure?</PixelAlertDialogTitle>
+      <PixelAlertDialogDescription>
+        This action cannot be undone.
+      </PixelAlertDialogDescription>
+    </PixelAlertDialogHeader>
+    <PixelAlertDialogFooter>
+      <PixelAlertDialogCancel>Cancel</PixelAlertDialogCancel>
+      <PixelAlertDialogAction>Continue</PixelAlertDialogAction>
+    </PixelAlertDialogFooter>
+  </PixelAlertDialogContent>
+</PixelAlertDialog>`,
     componentCode: `/src/components/ui/pixel-alert-dialog.tsx`,
   },
   {
@@ -659,8 +675,23 @@ toast({
     description: "Bottom drawer component.",
     category: "Overlays",
     installation: "npm install vaul",
-    importCode: `import { PixelDrawer, PixelDrawerTrigger, PixelDrawerContent, PixelDrawerHeader, PixelDrawerTitle } from "@/components/ui/pixel-drawer"`,
-    usageCode: `// See examples`,
+    importCode: `import { PixelDrawer, PixelDrawerTrigger, PixelDrawerContent, PixelDrawerHeader, PixelDrawerTitle, PixelDrawerDescription } from "@/components/ui/pixel-drawer"`,
+    usageCode: `<PixelDrawer>
+  <PixelDrawerTrigger asChild>
+    <PixelButton>Open Drawer</PixelButton>
+  </PixelDrawerTrigger>
+  <PixelDrawerContent>
+    <PixelDrawerHeader>
+      <PixelDrawerTitle>Drawer Title</PixelDrawerTitle>
+      <PixelDrawerDescription>
+        This is a drawer description
+      </PixelDrawerDescription>
+    </PixelDrawerHeader>
+    <div className="p-4">
+      <p>Drawer content goes here</p>
+    </div>
+  </PixelDrawerContent>
+</PixelDrawer>`,
     componentCode: `/src/components/ui/pixel-drawer.tsx`,
   },
   {

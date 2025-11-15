@@ -35,6 +35,10 @@ import { PixelMenubar, PixelMenubarMenu, PixelMenubarTrigger, PixelMenubarConten
 import { PixelNavigationMenu, PixelNavigationMenuList, PixelNavigationMenuItem, PixelNavigationMenuTrigger, PixelNavigationMenuContent, PixelNavigationMenuLink } from "@/components/ui/pixel/pixel-navigation-menu";
 import { PixelCommand, PixelCommandInput, PixelCommandList, PixelCommandEmpty, PixelCommandGroup, PixelCommandItem } from "@/components/ui/pixel/pixel-command";
 import { PixelSheet, PixelSheetContent, PixelSheetHeader, PixelSheetTitle, PixelSheetTrigger } from "@/components/ui/pixel/pixel-sheet";
+import { PixelDrawer, PixelDrawerTrigger, PixelDrawerContent, PixelDrawerHeader, PixelDrawerTitle, PixelDrawerDescription, PixelDrawerClose } from "@/components/ui/pixel/pixel-drawer";
+import { PixelToastProvider, usePixelToast } from "@/components/ui/pixel/pixel-toast";
+import { PixelToaster } from "@/components/ui/pixel/pixel-sonner";
+import { toast } from "sonner";
 import { PixelSeparator } from "@/components/ui/pixel/pixel-separator";
 import { PixelCollapsible, PixelCollapsibleContent, PixelCollapsibleTrigger } from "@/components/ui/pixel/pixel-collapsible";
 import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
@@ -75,6 +79,54 @@ import PixelSplashCursor from "@/components/ui/pixel/animations/pixel-splash-cur
 import PixelTargetCursor from "@/components/ui/pixel/animations/pixel-target-cursor";
 import PixelTrail from "@/components/ui/pixel/animations/pixel-trail";
 import { PixelImageTrail } from "@/components/ui/pixel/animations/pixel-image-trail";
+
+// Helper component for Toast demo
+function ToastDemo() {
+  const { addToast } = usePixelToast();
+  
+  return (
+    <div className="flex gap-4 flex-wrap">
+      <PixelButton onClick={() => addToast("This is a toast notification!")}>
+        Show Toast
+      </PixelButton>
+      <PixelButton 
+        variant="secondary"
+        onClick={() => addToast("Success!", { label: "Undo", onClick: () => console.log("Undo clicked") })}
+      >
+        Toast with Action
+      </PixelButton>
+    </div>
+  );
+}
+
+// Wrapper component that provides toast context
+function ToastDemoWrapper() {
+  return (
+    <PixelToastProvider>
+      <ToastDemo />
+    </PixelToastProvider>
+  );
+}
+
+// Helper component for Sonner demo
+function SonnerDemo() {
+  return (
+    <div className="flex gap-4 flex-wrap">
+      <PixelButton onClick={() => toast.success("Success message!")}>
+        Success Toast
+      </PixelButton>
+      <PixelButton variant="secondary" onClick={() => toast.error("Error message!")}>
+        Error Toast
+      </PixelButton>
+      <PixelButton onClick={() => toast("Default message")}>
+        Default Toast
+      </PixelButton>
+      <PixelButton onClick={() => toast.loading("Loading...")}>
+        Loading Toast
+      </PixelButton>
+    </div>
+  );
+}
 
 export function ComponentPreview({ slug }: { slug: string }) {
   const [checked, setChecked] = useState(false);
@@ -519,6 +571,30 @@ export function ComponentPreview({ slug }: { slug: string }) {
           </PixelSheetContent>
         </PixelSheet>
       );
+    
+    case "pixel-drawer":
+      return (
+        <PixelDrawer>
+          <PixelDrawerTrigger asChild>
+            <PixelButton>Open Drawer</PixelButton>
+          </PixelDrawerTrigger>
+          <PixelDrawerContent>
+            <PixelDrawerHeader>
+              <PixelDrawerTitle>Drawer Title</PixelDrawerTitle>
+              <PixelDrawerDescription>This is a drawer description</PixelDrawerDescription>
+            </PixelDrawerHeader>
+            <div className="p-4">
+              <p>Drawer content goes here</p>
+            </div>
+          </PixelDrawerContent>
+        </PixelDrawer>
+      );
+    
+    case "pixel-toast":
+      return <ToastDemoWrapper />;
+    
+    case "pixel-sonner":
+      return <SonnerDemo />;
     
     case "pixel-separator":
       return (
