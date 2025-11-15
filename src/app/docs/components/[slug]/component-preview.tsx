@@ -187,7 +187,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
             </PixelBentoContent>
           </PixelBentoItem>
           <PixelBentoItem variant="secondary">
-            <PixelBentoIcon>⭐</PixelBentoIcon>
+            <PixelBentoIcon>🎯</PixelBentoIcon>
             <PixelBentoTitle>Item 1</PixelBentoTitle>
           </PixelBentoItem>
           <PixelBentoItem variant="dark">

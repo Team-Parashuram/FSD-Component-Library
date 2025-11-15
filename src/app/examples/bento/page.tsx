@@ -199,7 +199,7 @@ export default function BentoExamplesPage() {
                 </PixelBentoContent>
               </PixelBentoItem>
               <PixelBentoItem variant="secondary" hover="lift">
-                <PixelBentoIcon>⭐</PixelBentoIcon>
+                <PixelBentoIcon>🏆</PixelBentoIcon>
                 <PixelBentoTitle>Rating</PixelBentoTitle>
                 <div className="text-3xl font-bold mt-4">4.9</div>
               </PixelBentoItem>
