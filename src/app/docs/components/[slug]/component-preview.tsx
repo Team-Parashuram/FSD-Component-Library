@@ -214,21 +214,21 @@ export function ComponentPreview({ slug }: { slug: string }) {
             <PixelFeatureIcon>🚀</PixelFeatureIcon>
             <PixelFeatureTitle>Fast</PixelFeatureTitle>
             <PixelFeatureDescription>
-              Blazing fast performance with zero transitions
+              Blazing fast performance
             </PixelFeatureDescription>
           </PixelFeatureItem>
           <PixelFeatureItem hover="lift">
             <PixelFeatureIcon>🎨</PixelFeatureIcon>
-            <PixelFeatureTitle>Beautiful</PixelFeatureTitle>
+            <PixelFeatureTitle>Modern</PixelFeatureTitle>
             <PixelFeatureDescription>
-              Pixel-perfect design with retro aesthetics
+              Pixel-perfect design
             </PixelFeatureDescription>
           </PixelFeatureItem>
           <PixelFeatureItem hover="lift">
             <PixelFeatureIcon>🔧</PixelFeatureIcon>
-            <PixelFeatureTitle>Customizable</PixelFeatureTitle>
+            <PixelFeatureTitle>Flexible</PixelFeatureTitle>
             <PixelFeatureDescription>
-              Fully customizable components
+              Fully customizable
             </PixelFeatureDescription>
           </PixelFeatureItem>
         </PixelFeatures>
