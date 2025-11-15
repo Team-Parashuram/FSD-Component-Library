@@ -81,27 +81,25 @@ const PixelGlitchText = React.forwardRef<HTMLDivElement, PixelGlitchTextProps>(
         {...props}
       >
         {text}
-        {enableShadows && (
+        {enableShadows && isGlitching && (
           <>
             <span
-              className="absolute top-0 left-0 opacity-70 pixel-borders"
+              className="absolute top-0 left-0 text-red-500 opacity-70 pointer-events-none"
               style={{
-                animation: isGlitching
-                  ? `pixel-glitch-shadow-1 ${speed}s infinite`
-                  : "none",
+                animation: `pixel-glitch-shadow-1 ${speed}s infinite`,
                 clipPath: "inset(20% 0 50% 0)",
               }}
+              aria-hidden="true"
             >
               {text}
             </span>
             <span
-              className="absolute top-0 left-0 opacity-70 pixel-borders"
+              className="absolute top-0 left-0 text-cyan-500 opacity-70 pointer-events-none"
               style={{
-                animation: isGlitching
-                  ? `pixel-glitch-shadow-2 ${speed * 1.2}s infinite`
-                  : "none",
+                animation: `pixel-glitch-shadow-2 ${speed * 1.2}s infinite`,
                 clipPath: "inset(60% 0 10% 0)",
               }}
+              aria-hidden="true"
             >
               {text}
             </span>

@@ -5,7 +5,8 @@ export type ComponentCategory =
   | "Navigation"
   | "Display"
   | "Overlays"
-  | "Animations";
+  | "Animations"
+  | "Special";
 
 export interface ComponentExample {
   title: string;
@@ -977,6 +978,1170 @@ function YourComponent() {
 
   // Layout
   {
+    slug: "pixel-hero",
+    title: "Hero Section",
+    description: "Pixel-perfect hero sections with multiple variants and layouts for landing pages.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelHero, 
+  PixelHeroContent, 
+  PixelHeroTitle, 
+  PixelHeroSubtitle, 
+  PixelHeroDescription, 
+  PixelHeroActions, 
+  PixelHeroBadge,
+  PixelHeroImage,
+  PixelHeroGrid,
+  PixelHeroFeature,
+  PixelHeroPattern
+} from "@/components/ui/pixel/pixel-hero"`,
+    usageCode: `<PixelHero variant="default" size="lg">
+  <PixelHeroContent>
+    <PixelHeroBadge>New Release v1.0</PixelHeroBadge>
+    <PixelHeroTitle>Welcome to Pixel UI</PixelHeroTitle>
+    <PixelHeroSubtitle>8-Bit Retro Component Library</PixelHeroSubtitle>
+    <PixelHeroDescription>
+      Build nostalgic web experiences with pixel-perfect components
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Learn More</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+    componentCode: `/src/components/ui/pixel/pixel-hero.tsx`,
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Hero visual style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl" | "full"', default: '"lg"', description: "Hero height/padding" },
+      { name: "align", type: '"left" | "center" | "right"', default: '"center"', description: "Content alignment" },
+      { name: "container", type: "boolean", default: "true", description: "Wrap content in container" },
+    ],
+    examples: [
+      {
+        title: "Simple Hero",
+        description: "Basic hero with title and actions",
+        code: `<PixelHero variant="default" size="lg">
+  <PixelHeroContent>
+    <PixelHeroTitle>Pixel UI</PixelHeroTitle>
+    <PixelHeroDescription>
+      8-bit retro components for modern web
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Documentation</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Badge",
+        description: "Hero with announcement badge",
+        code: `<PixelHero variant="primary" size="lg">
+  <PixelHeroContent>
+    <PixelHeroBadge>🎮 New Release</PixelHeroBadge>
+    <PixelHeroTitle size="xl">Level Up Your UI</PixelHeroTitle>
+    <PixelHeroSubtitle size="lg">
+      Nostalgic Design, Modern Code
+    </PixelHeroSubtitle>
+    <PixelHeroActions>
+      <PixelButton size="lg">Start Building</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Full Screen Hero",
+        description: "Hero that takes full viewport height",
+        code: `<PixelHero variant="gradient" size="full">
+  <PixelHeroContent>
+    <PixelHeroTitle size="xl">Build Retro Experiences</PixelHeroTitle>
+    <PixelHeroDescription>
+      Complete component library with 50+ pixel-perfect components
+    </PixelHeroDescription>
+    <PixelHeroActions>
+      <PixelButton size="lg">Explore Components</PixelButton>
+      <PixelButton size="lg" variant="secondary">View Examples</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Pattern",
+        description: "Hero with background pattern overlay",
+        code: `<PixelHero variant="dark" size="lg" className="relative">
+  <PixelHeroPattern pattern="dots" />
+  <PixelHeroContent>
+    <PixelHeroTitle>Pixel Perfect Design</PixelHeroTitle>
+    <PixelHeroSubtitle>With Background Patterns</PixelHeroSubtitle>
+    <PixelHeroActions>
+      <PixelButton>Get Started</PixelButton>
+    </PixelHeroActions>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+      {
+        title: "Split Hero with Grid",
+        description: "Two-column hero layout with image",
+        code: `<PixelHero variant="default" size="lg" align="left">
+  <PixelHeroGrid>
+    <PixelHeroContent className="mx-0">
+      <PixelHeroBadge>⭐ Featured</PixelHeroBadge>
+      <PixelHeroTitle size="lg">Next-Gen Components</PixelHeroTitle>
+      <PixelHeroDescription>
+        Build faster with our pixel-art component library
+      </PixelHeroDescription>
+      <PixelHeroActions className="justify-start">
+        <PixelButton>Get Started</PixelButton>
+        <PixelButton variant="ghost">Learn More</PixelButton>
+      </PixelHeroActions>
+    </PixelHeroContent>
+    <PixelHeroImage>
+      <img src="/hero-image.png" alt="Hero" className="w-full h-auto" />
+    </PixelHeroImage>
+  </PixelHeroGrid>
+</PixelHero>`,
+      },
+      {
+        title: "Hero with Features",
+        description: "Hero with feature highlights",
+        code: `<PixelHero variant="secondary" size="lg">
+  <PixelHeroContent>
+    <PixelHeroTitle>Why Choose Pixel UI?</PixelHeroTitle>
+    <PixelHeroDescription>
+      Everything you need for retro web design
+    </PixelHeroDescription>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <PixelHeroFeature>
+        <span className="text-2xl">🎮</span>
+        <div>
+          <h3 className="font-bold">Retro Design</h3>
+          <p className="text-sm opacity-80">Authentic 8-bit styling</p>
+        </div>
+      </PixelHeroFeature>
+      <PixelHeroFeature>
+        <span className="text-2xl">⚡</span>
+        <div>
+          <h3 className="font-bold">Fast</h3>
+          <p className="text-sm opacity-80">Zero transitions</p>
+        </div>
+      </PixelHeroFeature>
+      <PixelHeroFeature>
+        <span className="text-2xl">♿</span>
+        <div>
+          <h3 className="font-bold">Accessible</h3>
+          <p className="text-sm opacity-80">ARIA compliant</p>
+        </div>
+      </PixelHeroFeature>
+    </div>
+  </PixelHeroContent>
+</PixelHero>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-bento",
+    title: "Bento Grid",
+    description: "Modern bento-style grid layout with customizable spans and patterns.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelBentoGrid, 
+  PixelBentoItem, 
+  PixelBentoHeader,
+  PixelBentoTitle,
+  PixelBentoDescription,
+  PixelBentoContent,
+  PixelBentoIcon,
+  PixelBentoFooter,
+  PixelBentoPattern
+} from "@/components/ui/pixel/pixel-bento"`,
+    usageCode: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem span={2} variant="primary">
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎮</PixelBentoIcon>
+      <PixelBentoTitle>Featured</PixelBentoTitle>
+      <PixelBentoDescription>Main content area</PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>Your content here</PixelBentoContent>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoTitle>Item 2</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+    componentCode: `/src/components/ui/pixel/pixel-bento.tsx`,
+    examples: [
+      {
+        title: "Basic Grid",
+        description: "Simple 3-column bento grid",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎮</PixelBentoIcon>
+      <PixelBentoTitle>Gaming</PixelBentoTitle>
+      <PixelBentoDescription>Retro gaming components</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎨</PixelBentoIcon>
+      <PixelBentoTitle>Design</PixelBentoTitle>
+      <PixelBentoDescription>Pixel-perfect styling</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>⚡</PixelBentoIcon>
+      <PixelBentoTitle>Fast</PixelBentoTitle>
+      <PixelBentoDescription>Zero transitions</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Featured Layout",
+        description: "Large featured item with smaller cards",
+        code: `<PixelBentoGrid columns={3} gap="lg">
+  <PixelBentoItem span={2} rowSpan={2} variant="primary" hover="lift">
+    <PixelBentoPattern pattern="dots" />
+    <PixelBentoHeader>
+      <PixelBentoIcon>🚀</PixelBentoIcon>
+      <PixelBentoTitle>Featured Project</PixelBentoTitle>
+      <PixelBentoDescription>
+        Main showcase area with extra space
+      </PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>
+      <p>Large content area for featured items, projects, or announcements.</p>
+    </PixelBentoContent>
+    <PixelBentoFooter>
+      <button className="text-sm font-bold">Learn More →</button>
+    </PixelBentoFooter>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoIcon>📊</PixelBentoIcon>
+    <PixelBentoTitle>Stats</PixelBentoTitle>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoIcon>💎</PixelBentoIcon>
+    <PixelBentoTitle>Premium</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Pattern Backgrounds",
+        description: "Items with decorative patterns",
+        code: `<PixelBentoGrid columns={2} gap="md">
+  <PixelBentoItem variant="gradient">
+    <PixelBentoPattern pattern="dots" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Dots Pattern</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoPattern pattern="grid" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Grid Pattern</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="primary">
+    <PixelBentoPattern pattern="checkerboard" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Checkerboard</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoPattern pattern="scanlines" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Scanlines</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Dashboard Layout",
+        description: "Complex dashboard-style grid",
+        code: `<PixelBentoGrid columns={4} gap="md">
+  <PixelBentoItem span={2} variant="primary" hover="glow">
+    <PixelBentoHeader>
+      <PixelBentoIcon>📈</PixelBentoIcon>
+      <PixelBentoTitle>Analytics</PixelBentoTitle>
+      <PixelBentoDescription>Real-time data</PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>
+      <div className="text-4xl font-bold">1,234</div>
+      <div className="text-sm">Active Users</div>
+    </PixelBentoContent>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoIcon>⭐</PixelBentoIcon>
+    <PixelBentoTitle>Rating</PixelBentoTitle>
+    <div className="text-3xl font-bold mt-2">4.9</div>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoIcon>🔥</PixelBentoIcon>
+    <PixelBentoTitle>Streak</PixelBentoTitle>
+    <div className="text-3xl font-bold mt-2">42</div>
+  </PixelBentoItem>
+  <PixelBentoItem span={full}>
+    <PixelBentoPattern pattern="grid" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Full Width Section</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Ghost Items",
+        description: "Dashed border placeholder items",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem variant="primary">
+    <PixelBentoTitle>Active</PixelBentoTitle>
+  </PixelBentoItem>
+  <PixelBentoItem variant="ghost">
+    <PixelBentoTitle>Coming Soon</PixelBentoTitle>
+    <PixelBentoDescription>Feature in development</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem variant="ghost">
+    <PixelBentoTitle>Placeholder</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Hover Effects",
+        description: "Interactive hover animations",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem hover="lift" variant="default">
+    <PixelBentoIcon>🎯</PixelBentoIcon>
+    <PixelBentoTitle>Lift Effect</PixelBentoTitle>
+    <PixelBentoDescription>Hover to lift</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem hover="glow" variant="dark">
+    <PixelBentoIcon>✨</PixelBentoIcon>
+    <PixelBentoTitle>Glow Effect</PixelBentoTitle>
+    <PixelBentoDescription>Hover to glow</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem hover="none" variant="secondary">
+    <PixelBentoIcon>🔒</PixelBentoIcon>
+    <PixelBentoTitle>No Effect</PixelBentoTitle>
+    <PixelBentoDescription>Static item</PixelBentoDescription>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient" | "ghost"',
+        default: '"default"',
+        description: "Visual style variant of the bento grid or item",
+      },
+      {
+        name: "columns",
+        type: '1 | 2 | 3 | 4 | "auto"',
+        default: '"auto"',
+        description: "Number of columns in the grid (responsive)",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Spacing between grid items",
+      },
+      {
+        name: "span",
+        type: "1 | 2 | 3 | 4 | 'full'",
+        default: "1",
+        description: "Number of columns the item should span",
+      },
+      {
+        name: "rowSpan",
+        type: "1 | 2 | 3 | 'full'",
+        default: "1",
+        description: "Number of rows the item should span",
+      },
+      {
+        name: "hover",
+        type: '"none" | "lift" | "glow"',
+        default: '"none"',
+        description: "Hover effect animation",
+      },
+      {
+        name: "pattern",
+        type: '"dots" | "grid" | "checkerboard" | "scanlines"',
+        default: '"dots"',
+        description: "Background pattern for decorative overlay",
+      },
+    ],
+  },
+  {
+    slug: "pixel-features",
+    title: "Features Section",
+    description: "Showcase features and capabilities in a responsive grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFeatures,
+  PixelFeatureItem,
+  PixelFeatureIcon,
+  PixelFeatureTitle,
+  PixelFeatureDescription,
+  PixelFeatureHeader,
+  PixelFeatureSectionTitle,
+  PixelFeatureSectionDescription
+} from "@/components/ui/pixel/pixel-features"`,
+    usageCode: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureHeader>
+    <PixelFeatureSectionTitle>Features</PixelFeatureSectionTitle>
+    <PixelFeatureSectionDescription>
+      Everything you need to build amazing products
+    </PixelFeatureSectionDescription>
+  </PixelFeatureHeader>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎯</PixelFeatureIcon>
+    <PixelFeatureTitle>Fast Performance</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Lightning-fast load times
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+    componentCode: `/src/components/ui/pixel/pixel-features.tsx`,
+    examples: [
+      {
+        title: "Basic Features",
+        description: "Simple 3-column features grid",
+        code: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🚀</PixelFeatureIcon>
+    <PixelFeatureTitle>Fast</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Blazing fast performance
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎨</PixelFeatureIcon>
+    <PixelFeatureTitle>Modern</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Pixel-perfect design
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🔧</PixelFeatureIcon>
+    <PixelFeatureTitle>Flexible</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Fully customizable
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "With Header",
+        description: "Features section with title and description",
+        code: `<PixelFeatures columns={3} gap="lg">
+  <PixelFeatureHeader>
+    <PixelFeatureSectionTitle>Why Choose Us</PixelFeatureSectionTitle>
+    <PixelFeatureSectionDescription>
+      Everything you need to build amazing pixel-perfect applications
+    </PixelFeatureSectionDescription>
+  </PixelFeatureHeader>
+  <PixelFeatureItem variant="primary" hover="lift">
+    <PixelFeatureIcon>⚡</PixelFeatureIcon>
+    <PixelFeatureTitle>Lightning Fast</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Optimized for performance and speed
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="secondary" hover="lift">
+    <PixelFeatureIcon>🎯</PixelFeatureIcon>
+    <PixelFeatureTitle>Precise</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Pixel-perfect accuracy in every detail
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="dark" hover="glow">
+    <PixelFeatureIcon>🔒</PixelFeatureIcon>
+    <PixelFeatureTitle>Secure</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Built with security best practices
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "4-Column Layout",
+        description: "Wider grid with more features",
+        code: `<PixelFeatures columns={4} gap="md">
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🎮</PixelFeatureIcon>
+    <PixelFeatureTitle>Gaming Ready</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Perfect for retro gaming UIs
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>📱</PixelFeatureIcon>
+    <PixelFeatureTitle>Responsive</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Works on all devices
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>🌙</PixelFeatureIcon>
+    <PixelFeatureTitle>Dark Mode</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Built-in dark mode support
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="lift">
+    <PixelFeatureIcon>♿</PixelFeatureIcon>
+    <PixelFeatureTitle>Accessible</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      WCAG compliant components
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+      {
+        title: "Dark Variant",
+        description: "Features section with dark background",
+        code: `<PixelFeatures variant="dark" columns={3} gap="lg">
+  <PixelFeatureItem variant="primary" hover="glow">
+    <PixelFeatureIcon>💎</PixelFeatureIcon>
+    <PixelFeatureTitle>Premium</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Enterprise-grade features
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem hover="glow">
+    <PixelFeatureIcon>🔥</PixelFeatureIcon>
+    <PixelFeatureTitle>Hot Features</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Latest and greatest capabilities
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+  <PixelFeatureItem variant="gradient" hover="glow">
+    <PixelFeatureIcon>✨</PixelFeatureIcon>
+    <PixelFeatureTitle>Magic</PixelFeatureTitle>
+    <PixelFeatureDescription>
+      Delightful user experiences
+    </PixelFeatureDescription>
+  </PixelFeatureItem>
+</PixelFeatures>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark"',
+        default: '"default"',
+        description: "Background style of the features section",
+      },
+      {
+        name: "columns",
+        type: "1 | 2 | 3 | 4",
+        default: "3",
+        description: "Number of columns in the grid (responsive)",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"lg"',
+        description: "Spacing between feature items",
+      },
+      {
+        name: "hover",
+        type: '"none" | "lift" | "glow"',
+        default: '"lift"',
+        description: "Hover effect animation for feature items",
+      },
+    ],
+  },
+  {
+    slug: "pixel-cta",
+    title: "CTA Section",
+    description: "Call-to-action section for conversions and user engagement.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelCta,
+  PixelCtaContent,
+  PixelCtaTitle,
+  PixelCtaDescription,
+  PixelCtaActions,
+  PixelCtaPattern,
+  PixelCtaBadge,
+  PixelCtaHighlight
+} from "@/components/ui/pixel/pixel-cta"`,
+    usageCode: `<PixelCta variant="primary" size="md">
+  <PixelCtaContent>
+    <PixelCtaTitle>Get Started Today</PixelCtaTitle>
+    <PixelCtaDescription>
+      Join thousands of developers building amazing things
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg">Start Building</PixelButton>
+      <PixelButton variant="ghost" size="lg">Learn More</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+    componentCode: `/src/components/ui/pixel/pixel-cta.tsx`,
+    examples: [
+      {
+        title: "Basic CTA",
+        description: "Simple call-to-action with buttons",
+        code: `<PixelCta variant="primary" size="md">
+  <PixelCtaContent>
+    <PixelCtaTitle>Ready to Get Started?</PixelCtaTitle>
+    <PixelCtaDescription>
+      Join thousands of developers building pixel-perfect applications
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg" variant="default">Get Started</PixelButton>
+      <PixelButton size="lg" variant="ghost">Learn More</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "With Pattern",
+        description: "CTA with decorative background pattern",
+        code: `<PixelCta variant="gradient" size="lg">
+  <PixelCtaPattern pattern="dots" />
+  <PixelCtaContent>
+    <PixelCtaBadge>✨ Limited Time Offer</PixelCtaBadge>
+    <PixelCtaTitle>Build Something Amazing</PixelCtaTitle>
+    <PixelCtaDescription>
+      Create stunning retro interfaces with our pixel-perfect components
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton size="lg">Start Free Trial</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Dark CTA",
+        description: "Dark themed call-to-action",
+        code: `<PixelCta variant="dark" size="md">
+  <PixelCtaPattern pattern="grid" />
+  <PixelCtaContent>
+    <PixelCtaTitle>Join the Community</PixelCtaTitle>
+    <PixelCtaDescription>
+      Connect with other developers and share your creations
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <PixelButton variant="primary" size="lg">Join Discord</PixelButton>
+      <PixelButton variant="secondary" size="lg">View GitHub</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Left Aligned",
+        description: "CTA with left-aligned content",
+        code: `<PixelCta variant="secondary" size="md" align="left">
+  <PixelCtaContent>
+    <PixelCtaBadge>🎮 New Release</PixelCtaBadge>
+    <PixelCtaTitle>Version 2.0 is Here</PixelCtaTitle>
+    <PixelCtaDescription>
+      Check out the latest features and improvements in our biggest update yet
+    </PixelCtaDescription>
+    <PixelCtaActions className="justify-start">
+      <PixelButton size="lg">What's New</PixelButton>
+      <PixelButton variant="ghost" size="lg">Documentation</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+      {
+        title: "Compact CTA",
+        description: "Smaller CTA for inline use",
+        code: `<PixelCta variant="default" size="sm" align="center">
+  <PixelCtaContent>
+    <PixelCtaTitle>Subscribe to Newsletter</PixelCtaTitle>
+    <PixelCtaDescription>
+      Get weekly updates and exclusive content
+    </PixelCtaDescription>
+    <PixelCtaActions>
+      <input 
+        type="email" 
+        placeholder="your@email.com"
+        className="px-4 py-2 border-2 border-black"
+      />
+      <PixelButton>Subscribe</PixelButton>
+    </PixelCtaActions>
+  </PixelCtaContent>
+</PixelCta>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient" | "success" | "accent" | "purple"',
+        default: '"primary"',
+        description: "Visual style variant of the CTA section - now with colorful options",
+      },
+      {
+        name: "size",
+        type: '"sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Padding size of the CTA section",
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        default: '"center"',
+        description: "Text alignment within the CTA",
+      },
+      {
+        name: "pattern",
+        type: '"dots" | "grid" | "checkerboard" | "scanlines"',
+        default: '"dots"',
+        description: "Background pattern for decorative overlay",
+      },
+    ],
+  },
+  {
+    slug: "pixel-pricing",
+    title: "Pricing Section",
+    description: "Pricing tables and cards for displaying product or service pricing plans.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelPricing,
+  PixelPricingCard,
+  PixelPricingBadge,
+  PixelPricingTitle,
+  PixelPricingPrice,
+  PixelPricingPeriod,
+  PixelPricingDescription,
+  PixelPricingFeatures,
+  PixelPricingFeature,
+  PixelPricingActions,
+  PixelPricingHeader,
+  PixelPricingSectionTitle,
+  PixelPricingSectionDescription
+} from "@/components/ui/pixel/pixel-pricing"`,
+    usageCode: `<PixelPricing columns={3} gap="md">
+  <PixelPricingCard>
+    <PixelPricingTitle>Basic</PixelPricingTitle>
+    <PixelPricingPrice>$9</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>10 Projects</PixelPricingFeature>
+      <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton>Get Started</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+</PixelPricing>`,
+    componentCode: `/src/components/ui/pixel/pixel-pricing.tsx`,
+    examples: [
+      {
+        title: "Basic Pricing Cards",
+        description: "Simple 3-column pricing layout",
+        code: `<PixelPricing columns={3} gap="md">
+  <PixelPricingCard variant="default">
+    <PixelPricingTitle>Basic</PixelPricingTitle>
+    <PixelPricingPrice>$9</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>Perfect for individuals</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>10 Projects</PixelPricingFeature>
+      <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>Email Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton variant="secondary">Choose Plan</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+  
+  <PixelPricingCard variant="featured">
+    <PixelPricingBadge>Most Popular</PixelPricingBadge>
+    <PixelPricingTitle>Pro</PixelPricingTitle>
+    <PixelPricingPrice>$29</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>Perfect for teams</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>Unlimited Projects</PixelPricingFeature>
+      <PixelPricingFeature>50GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>Priority Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton>Choose Plan</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+  
+  <PixelPricingCard variant="default">
+    <PixelPricingTitle>Firm</PixelPricingTitle>
+    <PixelPricingPrice>$99</PixelPricingPrice>
+    <PixelPricingPeriod>per month</PixelPricingPeriod>
+    <PixelPricingDescription>For large organizations</PixelPricingDescription>
+    <PixelPricingFeatures>
+      <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
+      <PixelPricingFeature>500GB Storage</PixelPricingFeature>
+      <PixelPricingFeature>24/7 Support</PixelPricingFeature>
+    </PixelPricingFeatures>
+    <PixelPricingActions>
+      <PixelButton variant="secondary">Contact Sales</PixelButton>
+    </PixelPricingActions>
+  </PixelPricingCard>
+</PixelPricing>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '2 | 3 | 4', default: '3', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between pricing cards" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "featured"', default: '"default"', description: "Card visual style" },
+    ],
+  },
+  {
+    slug: "pixel-footer",
+    title: "Footer",
+    description: "Website footer with links, social media, and copyright information.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFooter,
+  PixelFooterGrid,
+  PixelFooterSection,
+  PixelFooterTitle,
+  PixelFooterLinks,
+  PixelFooterLink,
+  PixelFooterDivider,
+  PixelFooterBottom,
+  PixelFooterCopyright,
+  PixelFooterSocial,
+  PixelFooterSocialLink,
+  PixelFooterLogo,
+  PixelFooterDescription
+} from "@/components/ui/pixel/pixel-footer"`,
+    usageCode: `<PixelFooter variant="default" size="md">
+  <PixelFooterGrid>
+    <PixelFooterSection>
+      <PixelFooterTitle>Company</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="/about">About</PixelFooterLink>
+        <PixelFooterLink href="/contact">Contact</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+  </PixelFooterGrid>
+  <PixelFooterDivider />
+  <PixelFooterBottom>
+    <PixelFooterCopyright>© 2025 Your Company</PixelFooterCopyright>
+    <PixelFooterSocial>
+      <PixelFooterSocialLink href="#" icon="🐦" />
+      <PixelFooterSocialLink href="#" icon="💼" />
+    </PixelFooterSocial>
+  </PixelFooterBottom>
+</PixelFooter>`,
+    componentCode: `/src/components/ui/pixel/pixel-footer.tsx`,
+    examples: [
+      {
+        title: "Basic Footer",
+        description: "Simple footer with sections",
+        code: `<PixelFooter variant="default" size="md">
+  <PixelFooterGrid>
+    <PixelFooterSection>
+      <PixelFooterTitle>Product</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Features</PixelFooterLink>
+        <PixelFooterLink href="#">Pricing</PixelFooterLink>
+        <PixelFooterLink href="#">Changelog</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Company</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">About</PixelFooterLink>
+        <PixelFooterLink href="#">Blog</PixelFooterLink>
+        <PixelFooterLink href="#">Careers</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Resources</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Docs</PixelFooterLink>
+        <PixelFooterLink href="#">Guides</PixelFooterLink>
+        <PixelFooterLink href="#">API</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+    
+    <PixelFooterSection>
+      <PixelFooterTitle>Legal</PixelFooterTitle>
+      <PixelFooterLinks>
+        <PixelFooterLink href="#">Privacy</PixelFooterLink>
+        <PixelFooterLink href="#">Terms</PixelFooterLink>
+        <PixelFooterLink href="#">License</PixelFooterLink>
+      </PixelFooterLinks>
+    </PixelFooterSection>
+  </PixelFooterGrid>
+  
+  <PixelFooterDivider />
+  
+  <PixelFooterBottom>
+    <PixelFooterCopyright>© 2025 Pixel UI. All rights reserved.</PixelFooterCopyright>
+    <PixelFooterSocial>
+      <PixelFooterSocialLink href="#" icon="🐦" />
+      <PixelFooterSocialLink href="#" icon="📘" />
+      <PixelFooterSocialLink href="#" icon="💼" />
+      <PixelFooterSocialLink href="#" icon="📷" />
+    </PixelFooterSocial>
+  </PixelFooterBottom>
+</PixelFooter>`,
+      },
+    ],
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Footer visual style" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Padding size" },
+    ],
+  },
+  {
+    slug: "pixel-testimonials",
+    title: "Testimonials Section",
+    description: "Display customer reviews and testimonials in a grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelTestimonials,
+  PixelTestimonialCard,
+  PixelTestimonialQuote,
+  PixelTestimonialAuthor,
+  PixelTestimonialAvatar,
+  PixelTestimonialInfo,
+  PixelTestimonialName,
+  PixelTestimonialRole,
+  PixelTestimonialRating,
+  PixelTestimonialsHeader,
+  PixelTestimonialsSectionTitle,
+  PixelTestimonialsSectionDescription
+} from "@/components/ui/pixel/pixel-testimonials"`,
+    usageCode: `<PixelTestimonials columns={3} gap="md">
+  <PixelTestimonialCard>
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "Amazing product! Highly recommended."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>JD</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>John Doe</PixelTestimonialName>
+        <PixelTestimonialRole>CEO, Company</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+</PixelTestimonials>`,
+    componentCode: `/src/components/ui/pixel/pixel-testimonials.tsx`,
+    examples: [
+      {
+        title: "Basic Testimonials",
+        description: "Simple testimonial cards with ratings",
+        code: `<PixelTestimonials columns={3} gap="md">
+  <PixelTestimonialCard variant="default">
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "This component library completely transformed our design workflow. The pixel-art aesthetic is perfect for our retro gaming platform!"
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>SM</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Sarah Miller</PixelTestimonialName>
+        <PixelTestimonialRole>Lead Designer, GameDev Studios</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+  
+  <PixelTestimonialCard variant="primary">
+    <PixelTestimonialRating rating={5} />
+    <PixelTestimonialQuote>
+      "Easy to use, highly customizable, and the documentation is excellent. Our team shipped faster than ever before."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>MJ</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Mike Johnson</PixelTestimonialName>
+        <PixelTestimonialRole>CTO, StartupXYZ</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+  
+  <PixelTestimonialCard variant="default">
+    <PixelTestimonialRating rating={4} />
+    <PixelTestimonialQuote>
+      "The attention to detail is remarkable. Every component feels thoughtfully crafted and production-ready."
+    </PixelTestimonialQuote>
+    <PixelTestimonialAuthor>
+      <PixelTestimonialAvatar>EK</PixelTestimonialAvatar>
+      <PixelTestimonialInfo>
+        <PixelTestimonialName>Emma Kim</PixelTestimonialName>
+        <PixelTestimonialRole>Product Manager, TechCorp</PixelTestimonialRole>
+      </PixelTestimonialInfo>
+    </PixelTestimonialAuthor>
+  </PixelTestimonialCard>
+</PixelTestimonials>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '1 | 2 | 3', default: '3', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between testimonial cards" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "Card visual style" },
+    ],
+  },
+  {
+    slug: "pixel-stats",
+    title: "Stats Section",
+    description: "Display key metrics and statistics in an engaging grid layout.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelStats,
+  PixelStatItem,
+  PixelStatIcon,
+  PixelStatValue,
+  PixelStatLabel,
+  PixelStatDescription,
+  PixelStatTrend,
+  PixelStatsHeader,
+  PixelStatsSectionTitle,
+  PixelStatsSectionDescription
+} from "@/components/ui/pixel/pixel-stats"`,
+    usageCode: `<PixelStats columns={4} gap="md">
+  <PixelStatItem>
+    <PixelStatIcon>📊</PixelStatIcon>
+    <PixelStatValue>10K+</PixelStatValue>
+    <PixelStatLabel>Active Users</PixelStatLabel>
+    <PixelStatTrend trend="up">+12%</PixelStatTrend>
+  </PixelStatItem>
+</PixelStats>`,
+    componentCode: `/src/components/ui/pixel/pixel-stats.tsx`,
+    examples: [
+      {
+        title: "Basic Stats Grid",
+        description: "Simple 4-column stats display",
+        code: `<PixelStats columns={4} gap="md">
+  <PixelStatItem variant="default">
+    <PixelStatIcon>👥</PixelStatIcon>
+    <PixelStatValue>10,000+</PixelStatValue>
+    <PixelStatLabel>Active Users</PixelStatLabel>
+    <PixelStatTrend trend="up">+12% this month</PixelStatTrend>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="primary">
+    <PixelStatIcon>⭐</PixelStatIcon>
+    <PixelStatValue>4.9/5</PixelStatValue>
+    <PixelStatLabel>User Rating</PixelStatLabel>
+    <PixelStatDescription>Based on 2,500+ reviews</PixelStatDescription>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="secondary">
+    <PixelStatIcon>🚀</PixelStatIcon>
+    <PixelStatValue>99.9%</PixelStatValue>
+    <PixelStatLabel>Uptime</PixelStatLabel>
+    <PixelStatTrend trend="neutral">Last 12 months</PixelStatTrend>
+  </PixelStatItem>
+  
+  <PixelStatItem variant="gradient">
+    <PixelStatIcon>💰</PixelStatIcon>
+    <PixelStatValue>$2M+</PixelStatValue>
+    <PixelStatLabel>Revenue</PixelStatLabel>
+    <PixelStatTrend trend="up">+25% YoY</PixelStatTrend>
+  </PixelStatItem>
+</PixelStats>`,
+      },
+    ],
+    props: [
+      { name: "columns", type: '2 | 3 | 4', default: '4', description: "Number of columns in the grid" },
+      { name: "gap", type: '"none" | "sm" | "md" | "lg" | "xl"', default: '"md"', description: "Gap between stat items" },
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark" | "gradient"', default: '"default"', description: "Stat item visual style" },
+      { name: "trend", type: '"up" | "down" | "neutral"', default: '"neutral"', description: "Trend indicator direction and color" },
+    ],
+  },
+  {
+    slug: "pixel-faq",
+    title: "FAQ Section",
+    description: "Frequently Asked Questions with accordion-style expandable answers.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelFaq,
+  PixelFaqList,
+  PixelFaqItem,
+  PixelFaqQuestion,
+  PixelFaqAnswer,
+  PixelFaqHeader,
+  PixelFaqSectionTitle,
+  PixelFaqSectionDescription,
+  PixelFaqCategory,
+  PixelFaqCategoryTitle
+} from "@/components/ui/pixel/pixel-faq"`,
+    usageCode: `<PixelFaq variant="default">
+  <PixelFaqHeader>
+    <PixelFaqSectionTitle>FAQ</PixelFaqSectionTitle>
+    <PixelFaqSectionDescription>
+      Commonly asked questions
+    </PixelFaqSectionDescription>
+  </PixelFaqHeader>
+  <PixelFaqList>
+    <PixelFaqItem>
+      <PixelFaqQuestion>How do I get started?</PixelFaqQuestion>
+      <PixelFaqAnswer>Simply install and import components.</PixelFaqAnswer>
+    </PixelFaqItem>
+  </PixelFaqList>
+</PixelFaq>`,
+    componentCode: `/src/components/ui/pixel/pixel-faq.tsx`,
+    examples: [
+      {
+        title: "Basic FAQ",
+        description: "Simple accordion-style FAQ",
+        code: `<PixelFaq variant="default">
+  <PixelFaqHeader>
+    <PixelFaqSectionTitle>Frequently Asked Questions</PixelFaqSectionTitle>
+    <PixelFaqSectionDescription>
+      Find answers to common questions about our pixel component library
+    </PixelFaqSectionDescription>
+  </PixelFaqHeader>
+  
+  <PixelFaqList>
+    <PixelFaqItem defaultOpen>
+      <PixelFaqQuestion>How do I install the components?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        You can install individual components by copying the code from our docs, or install the entire library via npm. Each component includes installation instructions and dependencies.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Is this library free to use?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Yes! All components are completely free and open source. You can use them in personal and commercial projects without any restrictions.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Can I customize the pixel borders and shadows?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Absolutely! All components use Tailwind CSS classes and support className prop for easy customization. You can modify borders, shadows, colors, and more.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+    
+    <PixelFaqItem>
+      <PixelFaqQuestion>Do these components support dark mode?</PixelFaqQuestion>
+      <PixelFaqAnswer>
+        Yes, all components are built with dark mode support using Tailwind's dark: variant. They automatically adapt to your system's color scheme.
+      </PixelFaqAnswer>
+    </PixelFaqItem>
+  </PixelFaqList>
+</PixelFaq>`,
+      },
+    ],
+    props: [
+      { name: "variant", type: '"default" | "primary" | "secondary" | "dark"', default: '"default"', description: "FAQ section visual style" },
+      { name: "defaultOpen", type: "boolean", default: "false", description: "Whether the FAQ item is open by default" },
+    ],
+  },
+  {
     slug: "pixel-accordion",
     title: "Accordion",
     description: "Collapsible content sections.",
@@ -1594,6 +2759,578 @@ function YourComponent() {
     usageCode: `<PixelImageTrail images={[]} />`,
     componentCode: `/src/components/ui/pixel/animations/pixel-image-trail.tsx`,
   },
+
+  // Special Components
+  {
+    slug: "pixel-loader",
+    title: "Retro Loader",
+    description: "Retro loading screens with cassette tape, floppy disk, and CRT boot animations.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelLoader } from "@/components/ui/pixel/pixel-loader"`,
+    usageCode: `<PixelLoader variant="cassette" />
+<PixelLoader variant="floppy" text="Loading..." />
+<PixelLoader variant="crt" size="lg" />`,
+    componentCode: `/src/components/ui/pixel/pixel-loader.tsx`,
+    props: [
+      { name: "variant", type: '"cassette" | "floppy" | "crt"', default: '"cassette"', description: "Loading animation style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "full"', default: '"md"', description: "Loader size" },
+      { name: "progress", type: "number", default: "0", description: "Progress percentage (0-100)" },
+      { name: "text", type: "string", description: "Custom loading text" },
+      { name: "isLoading", type: "boolean", default: "true", description: "Enable auto-progress animation" },
+    ],
+    examples: [
+      {
+        title: "Cassette Tape",
+        description: "Classic cassette tape loading animation",
+        code: `<PixelLoader variant="cassette" text="LOADING GAME..." />`,
+      },
+      {
+        title: "Floppy Disk",
+        description: "Floppy disk inserting animation",
+        code: `<PixelLoader variant="floppy" size="lg" />`,
+      },
+      {
+        title: "CRT Boot",
+        description: "CRT terminal boot sequence",
+        code: `<PixelLoader variant="crt" text="BOOTING SYSTEM..." />`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-terminal",
+    title: "Terminal",
+    description: "Interactive retro terminal with command execution, history, and auto-completion.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal"`,
+    usageCode: `<PixelTerminal 
+  variant="matrix"
+  commands={{
+    hello: () => 'Hello World!',
+    time: () => new Date().toLocaleTimeString(),
+  }}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-terminal.tsx`,
+    props: [
+      { name: "variant", type: '"default" | "amber" | "white" | "matrix" | "retro"', default: '"default"', description: "Terminal color scheme" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Terminal size" },
+      { name: "prompt", type: "string", default: '"user@pixel:~$"', description: "Command prompt text" },
+      { name: "welcomeMessage", type: "string | ReactNode", description: "Message shown on terminal start" },
+      { name: "commands", type: "Record<string, Function>", description: "Custom command handlers" },
+      { name: "onCommand", type: "(command: string, args: string[]) => void", description: "Command execution callback" },
+      { name: "showCursor", type: "boolean", default: "true", description: "Show blinking cursor" },
+    ],
+    examples: [
+      {
+        title: "Matrix Terminal",
+        description: "Green matrix-style terminal",
+        code: `<PixelTerminal variant="matrix" prompt="neo@matrix:~$" />`,
+      },
+      {
+        title: "Custom Commands",
+        description: "Terminal with custom commands",
+        code: `<PixelTerminal 
+  commands={{
+    joke: () => 'Why do programmers prefer dark mode?',
+    calc: (args) => eval(args.join(' ')),
+  }}
+/>`,
+      },
+      {
+        title: "Portfolio Terminal",
+        description: "Interactive portfolio showcase",
+        code: `<PixelTerminal 
+  variant="amber"
+  welcomeMessage="Welcome to my portfolio!"
+  commands={{
+    about: () => 'Full Stack Developer',
+    skills: () => 'React, TypeScript, Node.js',
+  }}
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-game-ui",
+    title: "Game UI",
+    description: "Gaming UI components including health bars, inventory, achievements, and damage numbers.",
+    category: "Special",
+    installation: "",
+    importCode: `import { 
+  PixelHealthBar, 
+  PixelManaBar, 
+  PixelXPBar,
+  PixelInventory,
+  PixelInventorySlot,
+  PixelAchievement,
+  PixelDamageNumber
+} from "@/components/ui/pixel/pixel-game-ui"`,
+    usageCode: `<PixelHealthBar current={75} max={100} />
+<PixelManaBar current={50} max={100} />
+<PixelXPBar currentXP={350} requiredXP={500} level={12} />
+<PixelInventory columns={5} title="Backpack">
+  <PixelInventorySlot item="⚔️" rarity="legendary" />
+</PixelInventory>
+<PixelAchievement 
+  variant="gold" 
+  title="Master"
+  icon="🥇"
+  points={50}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-game-ui.tsx`,
+    props: [
+      { name: "current", type: "number", description: "Current health/mana value" },
+      { name: "max", type: "number", description: "Maximum health/mana value" },
+      { name: "currentXP", type: "number", description: "Current experience points" },
+      { name: "requiredXP", type: "number", description: "XP required for next level" },
+      { name: "level", type: "number", description: "Character level" },
+      { name: "columns", type: "3 | 4 | 5 | 6", default: "5", description: "Inventory grid columns" },
+      { name: "rarity", type: '"common" | "rare" | "epic" | "legendary"', description: "Item rarity" },
+      { name: "variant", type: '"bronze" | "silver" | "gold" | "platinum"', description: "Achievement tier" },
+    ],
+    examples: [
+      {
+        title: "Health Bar",
+        description: "HP bar with auto-coloring",
+        code: `<PixelHealthBar current={75} max={100} label="HP" />`,
+      },
+      {
+        title: "XP Bar",
+        description: "Experience bar with level",
+        code: `<PixelXPBar currentXP={350} requiredXP={500} level={12} />`,
+      },
+      {
+        title: "Inventory",
+        description: "Grid-based inventory system",
+        code: `<PixelInventory columns={5}>
+  <PixelInventorySlot item="⚔️" rarity="legendary" />
+  <PixelInventorySlot item="💊" count={5} />
+</PixelInventory>`,
+      },
+      {
+        title: "Achievement",
+        description: "Trophy notification",
+        code: `<PixelAchievement 
+  variant="gold" 
+  title="Master"
+  description="Defeat 100 enemies"
+  icon="🥇"
+  points={50}
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-window",
+    title: "Retro Window",
+    description: "Windows 95/98 style draggable windows with minimize, maximize, and close buttons.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelWindow } from "@/components/ui/pixel/pixel-window"`,
+    usageCode: `<PixelWindow 
+  title="My Window"
+  defaultPosition={{ x: 100, y: 100 }}
+  defaultSize={{ width: 400, height: 300 }}
+>
+  Window content here...
+</PixelWindow>`,
+    componentCode: `/src/components/ui/pixel/pixel-window.tsx`,
+    props: [
+      { name: "title", type: "string", default: '"Window"', description: "Window title text" },
+      { name: "icon", type: "ReactNode", description: "Window icon" },
+      { name: "defaultPosition", type: "{ x: number, y: number }", description: "Initial window position" },
+      { name: "defaultSize", type: "{ width: number, height: number }", description: "Initial window size" },
+      { name: "resizable", type: "boolean", default: "false", description: "Allow window resizing" },
+      { name: "closable", type: "boolean", default: "true", description: "Show close button" },
+      { name: "minimizable", type: "boolean", default: "true", description: "Show minimize button" },
+      { name: "maximizable", type: "boolean", default: "true", description: "Show maximize button" },
+      { name: "onClose", type: "() => void", description: "Close callback" },
+    ],
+    examples: [
+      {
+        title: "Basic Window",
+        description: "Simple draggable window",
+        code: `<PixelWindow title="Notepad">
+  <p>This is a retro window!</p>
+</PixelWindow>`,
+      },
+      {
+        title: "With Icon",
+        description: "Window with title icon",
+        code: `<PixelWindow title="My Computer" icon="💻">
+  <p>Computer contents...</p>
+</PixelWindow>`,
+      },
+      {
+        title: "Custom Size",
+        description: "Window with custom dimensions",
+        code: `<PixelWindow 
+  title="Large Window"
+  defaultSize={{ width: 600, height: 400 }}
+>
+  <p>Large content area</p>
+</PixelWindow>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-audio-visualizer",
+    title: "Audio Visualizer",
+    description: "Retro audio visualizer with equalizer bars, waveform, and circular modes.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer"`,
+    usageCode: `<PixelAudioVisualizer 
+  variant="bars"
+  barCount={32}
+  animated={true}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-audio-visualizer.tsx`,
+    props: [
+      { name: "variant", type: '"bars" | "wave" | "circular" | "spectrum"', default: '"bars"', description: "Visualizer style" },
+      { name: "barCount", type: "number", default: "32", description: "Number of frequency bars" },
+      { name: "color", type: "string", description: "Visualizer color" },
+      { name: "animated", type: "boolean", default: "true", description: "Enable animation" },
+      { name: "responsive", type: "boolean", default: "true", description: "Adapt to container size" },
+      { name: "audioSource", type: "MediaStream | HTMLAudioElement", description: "Audio source for real-time visualization" },
+    ],
+    examples: [
+      {
+        title: "Equalizer Bars",
+        description: "Classic equalizer bars",
+        code: `<PixelAudioVisualizer variant="bars" barCount={32} />`,
+      },
+      {
+        title: "Waveform",
+        description: "Wave oscilloscope style",
+        code: `<PixelAudioVisualizer variant="wave" color="#00ff00" />`,
+      },
+      {
+        title: "Circular",
+        description: "Circular frequency display",
+        code: `<PixelAudioVisualizer variant="circular" barCount={64} />`,
+      },
+      {
+        title: "Spectrum",
+        description: "Full spectrum analyzer",
+        code: `<PixelAudioVisualizer variant="spectrum" />`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-code-block",
+    title: "Code Block",
+    description: "Syntax-highlighted code display with line numbers, copy button, and retro terminal themes.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block"`,
+    usageCode: `<PixelCodeBlock 
+  code={sourceCode}
+  language="javascript"
+  title="app.js"
+  highlightLines={[2, 3]}
+/>
+<PixelCode>const x = 10;</PixelCode>`,
+    componentCode: `/src/components/ui/pixel/pixel-code-block.tsx`,
+    props: [
+      { name: "code", type: "string", description: "Source code to display" },
+      { name: "language", type: "string", description: "Programming language (e.g., 'javascript', 'python')" },
+      { name: "title", type: "string", description: "Code block title/filename" },
+      { name: "variant", type: '"default" | "terminal" | "dark" | "light" | "matrix" | "amber"', default: '"default"', description: "Color theme" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Text size" },
+      { name: "showLineNumbers", type: "boolean", default: "true", description: "Show line numbers" },
+      { name: "showCopyButton", type: "boolean", default: "true", description: "Show copy button" },
+      { name: "highlightLines", type: "number[]", description: "Array of line numbers to highlight" },
+    ],
+    examples: [
+      {
+        title: "JavaScript Code",
+        description: "Basic JavaScript with syntax highlighting",
+        code: `<PixelCodeBlock 
+  code="function hello() { console.log('Hello!'); }"
+  language="javascript"
+  title="app.js"
+/>`,
+      },
+      {
+        title: "Terminal Theme",
+        description: "Green terminal style",
+        code: `<PixelCodeBlock 
+  code="npm install pixel-ui"
+  variant="terminal"
+  showLineNumbers={false}
+/>`,
+      },
+      {
+        title: "Line Highlighting",
+        description: "Highlight specific lines",
+        code: `<PixelCodeBlock 
+  code={multiLineCode}
+  highlightLines={[2, 3, 4]}
+  title="important.ts"
+/>`,
+      },
+      {
+        title: "Inline Code",
+        description: "Inline code snippet",
+        code: `<p>Use <PixelCode>useState</PixelCode> for state management.</p>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-timeline",
+    title: "Timeline",
+    description: "Vertical and horizontal timelines with milestones, checkpoints, and progress tracking.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline"`,
+    usageCode: `<PixelTimeline 
+  items={timelineItems}
+  orientation="vertical"
+  markerShape="circle"
+/>
+<PixelTimelineCheckpoint 
+  checkpoints={checkpoints}
+  orientation="horizontal"
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-timeline.tsx`,
+    props: [
+      { name: "items", type: "TimelineItemType[]", description: "Timeline items array" },
+      { name: "orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Timeline direction" },
+      { name: "markerSize", type: '"sm" | "md" | "lg"', default: '"md"', description: "Marker size" },
+      { name: "markerShape", type: '"square" | "circle" | "diamond"', default: '"square"', description: "Marker shape" },
+      { name: "showConnector", type: "boolean", default: "true", description: "Show connecting lines" },
+      { name: "checkpoints", type: "Array<{ label: string, completed?: boolean, active?: boolean }>", description: "Checkpoint items for progress tracking" },
+    ],
+    examples: [
+      {
+        title: "Project Timeline",
+        description: "Vertical timeline with milestones",
+        code: `<PixelTimeline 
+  items={[
+    { title: "Started", date: "Jan 2024", variant: "success" },
+    { title: "In Progress", date: "Feb 2024", variant: "warning" },
+  ]}
+/>`,
+      },
+      {
+        title: "Checkpoint Progress",
+        description: "Step-by-step progress tracker",
+        code: `<PixelTimelineCheckpoint 
+  checkpoints={[
+    { label: "Register", completed: true },
+    { label: "Verify", active: true },
+    { label: "Complete", completed: false },
+  ]}
+/>`,
+      },
+      {
+        title: "Horizontal Timeline",
+        description: "Horizontal layout for wide displays",
+        code: `<PixelTimeline 
+  items={events}
+  orientation="horizontal"
+  markerShape="circle"
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-notification",
+    title: "Notification",
+    description: "Toast notification system with auto-dismiss, stacking, variants, and action buttons.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification"`,
+    usageCode: `<PixelNotification 
+  title="Success!"
+  description="Changes saved"
+  variant="success"
+  onClose={() => {}}
+/>
+
+// In component:
+const { addToast } = usePixelToast();
+addToast({ 
+  title: "Success", 
+  variant: "success",
+  duration: 5000 
+});`,
+    componentCode: `/src/components/ui/pixel/pixel-notification.tsx`,
+    props: [
+      { name: "title", type: "string", description: "Notification title" },
+      { name: "description", type: "string", description: "Notification message" },
+      { name: "variant", type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: "Notification style" },
+      { name: "icon", type: "ReactNode", description: "Icon element" },
+      { name: "onClose", type: "() => void", description: "Close callback" },
+      { name: "action", type: "{ label: string, onClick: () => void }", description: "Action button config" },
+      { name: "duration", type: "number", default: "5000", description: "Auto-dismiss duration (ms), 0 for persistent" },
+    ],
+    examples: [
+      {
+        title: "Success Toast",
+        description: "Success notification",
+        code: `<PixelNotification 
+  title="Success!"
+  description="Operation completed"
+  variant="success"
+  icon="✓"
+/>`,
+      },
+      {
+        title: "With Action",
+        description: "Notification with action button",
+        code: `<PixelNotification 
+  title="Update Available"
+  action={{ label: "Update", onClick: () => update() }}
+/>`,
+      },
+      {
+        title: "Toast Hook",
+        description: "Programmatic toast creation",
+        code: `const { addToast } = usePixelToast();
+
+addToast({
+  title: "Saved!",
+  variant: "success",
+  duration: 3000
+});`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-chat",
+    title: "Chat",
+    description: "Retro chat messenger with message bubbles, typing indicators, and multiple style variants.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat"`,
+    usageCode: `<PixelChat 
+  messages={messages}
+  onSendMessage={(text) => handleSend(text)}
+  showTypingIndicator={isTyping}
+/>
+<PixelMessageBubble 
+  text="Hello!"
+  sender="user"
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-chat.tsx`,
+    props: [
+      { name: "messages", type: "MessageType[]", description: "Array of chat messages" },
+      { name: "onSendMessage", type: "(message: string) => void", description: "Send message callback" },
+      { name: "variant", type: '"default" | "retro" | "terminal"', default: '"default"', description: "Chat style" },
+      { name: "size", type: '"sm" | "md" | "lg"', default: '"md"', description: "Chat window size" },
+      { name: "showTypingIndicator", type: "boolean", default: "false", description: "Show typing animation" },
+      { name: "typingUser", type: "string", description: "Name of user who is typing" },
+      { name: "placeholder", type: "string", default: '"Type a message..."', description: "Input placeholder" },
+    ],
+    examples: [
+      {
+        title: "Basic Chat",
+        description: "Simple chat interface",
+        code: `<PixelChat 
+  messages={chatMessages}
+  onSendMessage={handleSend}
+/>`,
+      },
+      {
+        title: "With Typing Indicator",
+        description: "Show when other user is typing",
+        code: `<PixelChat 
+  messages={messages}
+  showTypingIndicator={true}
+  typingUser="Alice"
+/>`,
+      },
+      {
+        title: "Message Bubble",
+        description: "Standalone message component",
+        code: `<PixelMessageBubble 
+  text="Hello!"
+  sender="user"
+  username="Bob"
+  timestamp="10:30 AM"
+/>`,
+      },
+      {
+        title: "Terminal Style",
+        description: "Terminal-themed chat",
+        code: `<PixelChat 
+  messages={messages}
+  variant="terminal"
+/>`,
+      },
+    ],
+  },
+  {
+    slug: "pixel-countdown",
+    title: "Countdown",
+    description: "Countdown timer and stopwatch with flip-clock display, multiple variants, and controls.",
+    category: "Special",
+    installation: "",
+    importCode: `import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown"`,
+    usageCode: `<PixelCountdown 
+  targetDate={new Date("2025-12-31")}
+  variant="flip"
+  size="lg"
+/>
+<PixelTimer 
+  initialMinutes={5}
+  showControls={true}
+/>`,
+    componentCode: `/src/components/ui/pixel/pixel-countdown.tsx`,
+    props: [
+      { name: "targetDate", type: "Date", description: "Target date for countdown" },
+      { name: "initialSeconds", type: "number", description: "Initial seconds (alternative to targetDate)" },
+      { name: "variant", type: '"default" | "retro" | "digital" | "flip"', default: '"default"', description: "Display style" },
+      { name: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Countdown size" },
+      { name: "showDays", type: "boolean", default: "true", description: "Show days unit" },
+      { name: "showHours", type: "boolean", default: "true", description: "Show hours unit" },
+      { name: "showMinutes", type: "boolean", default: "true", description: "Show minutes unit" },
+      { name: "showSeconds", type: "boolean", default: "true", description: "Show seconds unit" },
+      { name: "labels", type: "boolean", default: "true", description: "Show unit labels" },
+      { name: "onComplete", type: "() => void", description: "Callback when countdown reaches zero" },
+      { name: "showControls", type: "boolean", default: "true", description: "Show start/pause/reset buttons (PixelTimer only)" },
+    ],
+    examples: [
+      {
+        title: "Event Countdown",
+        description: "Countdown to specific date",
+        code: `<PixelCountdown 
+  targetDate={new Date("2025-12-31")}
+  variant="flip"
+/>`,
+      },
+      {
+        title: "Timer with Controls",
+        description: "Controllable timer",
+        code: `<PixelTimer 
+  initialMinutes={5}
+  variant="digital"
+  showControls={true}
+/>`,
+      },
+      {
+        title: "Seconds Only",
+        description: "Simple seconds counter",
+        code: `<PixelCountdown 
+  initialSeconds={60}
+  showDays={false}
+  showHours={false}
+  showMinutes={false}
+/>`,
+      },
+      {
+        title: "Pomodoro Timer",
+        description: "25-minute focus timer",
+        code: `<PixelTimer 
+  initialMinutes={25}
+  onComplete={() => alert("Break time!")}
+/>`,
+      },
+    ],
+  },
 ];
 
 export function getComponentBySlug(slug: string): ComponentDoc | undefined {
@@ -1612,4 +3349,5 @@ export const categories: ComponentCategory[] = [
   "Navigation",
   "Overlays",
   "Layout",
+  "Special",
 ];
