@@ -759,6 +759,241 @@ toast({
     ],
   },
   {
+    slug: "pixel-bento",
+    title: "Bento Grid",
+    description: "Modern bento-style grid layout with customizable spans and patterns.",
+    category: "Layout",
+    installation: "",
+    importCode: `import { 
+  PixelBentoGrid, 
+  PixelBentoItem, 
+  PixelBentoHeader,
+  PixelBentoTitle,
+  PixelBentoDescription,
+  PixelBentoContent,
+  PixelBentoIcon,
+  PixelBentoFooter,
+  PixelBentoPattern
+} from "@/components/ui/pixel/pixel-bento"`,
+    usageCode: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem span={2} variant="primary">
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎮</PixelBentoIcon>
+      <PixelBentoTitle>Featured</PixelBentoTitle>
+      <PixelBentoDescription>Main content area</PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>Your content here</PixelBentoContent>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoTitle>Item 2</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+    componentCode: `/src/components/ui/pixel/pixel-bento.tsx`,
+    examples: [
+      {
+        title: "Basic Grid",
+        description: "Simple 3-column bento grid",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎮</PixelBentoIcon>
+      <PixelBentoTitle>Gaming</PixelBentoTitle>
+      <PixelBentoDescription>Retro gaming components</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>🎨</PixelBentoIcon>
+      <PixelBentoTitle>Design</PixelBentoTitle>
+      <PixelBentoDescription>Pixel-perfect styling</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem>
+    <PixelBentoHeader>
+      <PixelBentoIcon>⚡</PixelBentoIcon>
+      <PixelBentoTitle>Fast</PixelBentoTitle>
+      <PixelBentoDescription>Zero transitions</PixelBentoDescription>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Featured Layout",
+        description: "Large featured item with smaller cards",
+        code: `<PixelBentoGrid columns={3} gap="lg">
+  <PixelBentoItem span={2} rowSpan={2} variant="primary" hover="lift">
+    <PixelBentoPattern pattern="dots" />
+    <PixelBentoHeader>
+      <PixelBentoIcon>🚀</PixelBentoIcon>
+      <PixelBentoTitle>Featured Project</PixelBentoTitle>
+      <PixelBentoDescription>
+        Main showcase area with extra space
+      </PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>
+      <p>Large content area for featured items, projects, or announcements.</p>
+    </PixelBentoContent>
+    <PixelBentoFooter>
+      <button className="text-sm font-bold">Learn More →</button>
+    </PixelBentoFooter>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoIcon>📊</PixelBentoIcon>
+    <PixelBentoTitle>Stats</PixelBentoTitle>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoIcon>💎</PixelBentoIcon>
+    <PixelBentoTitle>Premium</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Pattern Backgrounds",
+        description: "Items with decorative patterns",
+        code: `<PixelBentoGrid columns={2} gap="md">
+  <PixelBentoItem variant="gradient">
+    <PixelBentoPattern pattern="dots" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Dots Pattern</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoPattern pattern="grid" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Grid Pattern</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="primary">
+    <PixelBentoPattern pattern="checkerboard" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Checkerboard</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoPattern pattern="scanlines" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Scanlines</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Dashboard Layout",
+        description: "Complex dashboard-style grid",
+        code: `<PixelBentoGrid columns={4} gap="md">
+  <PixelBentoItem span={2} variant="primary" hover="glow">
+    <PixelBentoHeader>
+      <PixelBentoIcon>📈</PixelBentoIcon>
+      <PixelBentoTitle>Analytics</PixelBentoTitle>
+      <PixelBentoDescription>Real-time data</PixelBentoDescription>
+    </PixelBentoHeader>
+    <PixelBentoContent>
+      <div className="text-4xl font-bold">1,234</div>
+      <div className="text-sm">Active Users</div>
+    </PixelBentoContent>
+  </PixelBentoItem>
+  <PixelBentoItem variant="secondary">
+    <PixelBentoIcon>⭐</PixelBentoIcon>
+    <PixelBentoTitle>Rating</PixelBentoTitle>
+    <div className="text-3xl font-bold mt-2">4.9</div>
+  </PixelBentoItem>
+  <PixelBentoItem variant="dark">
+    <PixelBentoIcon>🔥</PixelBentoIcon>
+    <PixelBentoTitle>Streak</PixelBentoTitle>
+    <div className="text-3xl font-bold mt-2">42</div>
+  </PixelBentoItem>
+  <PixelBentoItem span={full}>
+    <PixelBentoPattern pattern="grid" />
+    <PixelBentoHeader>
+      <PixelBentoTitle>Full Width Section</PixelBentoTitle>
+    </PixelBentoHeader>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Ghost Items",
+        description: "Dashed border placeholder items",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem variant="primary">
+    <PixelBentoTitle>Active</PixelBentoTitle>
+  </PixelBentoItem>
+  <PixelBentoItem variant="ghost">
+    <PixelBentoTitle>Coming Soon</PixelBentoTitle>
+    <PixelBentoDescription>Feature in development</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem variant="ghost">
+    <PixelBentoTitle>Placeholder</PixelBentoTitle>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+      {
+        title: "Hover Effects",
+        description: "Interactive hover animations",
+        code: `<PixelBentoGrid columns={3} gap="md">
+  <PixelBentoItem hover="lift" variant="default">
+    <PixelBentoIcon>🎯</PixelBentoIcon>
+    <PixelBentoTitle>Lift Effect</PixelBentoTitle>
+    <PixelBentoDescription>Hover to lift</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem hover="glow" variant="dark">
+    <PixelBentoIcon>✨</PixelBentoIcon>
+    <PixelBentoTitle>Glow Effect</PixelBentoTitle>
+    <PixelBentoDescription>Hover to glow</PixelBentoDescription>
+  </PixelBentoItem>
+  <PixelBentoItem hover="none" variant="secondary">
+    <PixelBentoIcon>🔒</PixelBentoIcon>
+    <PixelBentoTitle>No Effect</PixelBentoTitle>
+    <PixelBentoDescription>Static item</PixelBentoDescription>
+  </PixelBentoItem>
+</PixelBentoGrid>`,
+      },
+    ],
+    props: [
+      {
+        name: "variant",
+        type: '"default" | "primary" | "secondary" | "dark" | "gradient" | "ghost"',
+        default: '"default"',
+        description: "Visual style variant of the bento grid or item",
+      },
+      {
+        name: "columns",
+        type: '1 | 2 | 3 | 4 | "auto"',
+        default: '"auto"',
+        description: "Number of columns in the grid (responsive)",
+      },
+      {
+        name: "gap",
+        type: '"none" | "sm" | "md" | "lg" | "xl"',
+        default: '"md"',
+        description: "Spacing between grid items",
+      },
+      {
+        name: "span",
+        type: "1 | 2 | 3 | 4 | 'full'",
+        default: "1",
+        description: "Number of columns the item should span",
+      },
+      {
+        name: "rowSpan",
+        type: "1 | 2 | 3 | 'full'",
+        default: "1",
+        description: "Number of rows the item should span",
+      },
+      {
+        name: "hover",
+        type: '"none" | "lift" | "glow"',
+        default: '"none"',
+        description: "Hover effect animation",
+      },
+      {
+        name: "pattern",
+        type: '"dots" | "grid" | "checkerboard" | "scanlines"',
+        default: '"dots"',
+        description: "Background pattern for decorative overlay",
+      },
+    ],
+  },
+  {
     slug: "pixel-accordion",
     title: "Accordion",
     description: "Collapsible content sections.",

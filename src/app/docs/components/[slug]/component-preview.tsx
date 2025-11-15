@@ -37,6 +37,7 @@ import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
 import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
 import { PixelHoverCard, PixelHoverCardContent, PixelHoverCardTrigger } from "@/components/ui/pixel/pixel-hover-card";
 import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
+import { PixelBentoGrid, PixelBentoItem, PixelBentoHeader, PixelBentoTitle, PixelBentoDescription, PixelBentoIcon, PixelBentoContent } from "@/components/ui/pixel/pixel-bento";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -170,6 +171,38 @@ export function ComponentPreview({ slug }: { slug: string }) {
             </PixelHeroActions>
           </PixelHeroContent>
         </PixelHero>
+      );
+    
+    case "pixel-bento":
+      return (
+        <PixelBentoGrid columns={3} gap="md" className="w-full">
+          <PixelBentoItem span={2} variant="primary">
+            <PixelBentoHeader>
+              <PixelBentoIcon>🎮</PixelBentoIcon>
+              <PixelBentoTitle>Featured</PixelBentoTitle>
+              <PixelBentoDescription>Main content area</PixelBentoDescription>
+            </PixelBentoHeader>
+            <PixelBentoContent>
+              <p className="text-sm">Large featured section with 2-column span</p>
+            </PixelBentoContent>
+          </PixelBentoItem>
+          <PixelBentoItem variant="secondary">
+            <PixelBentoIcon>⭐</PixelBentoIcon>
+            <PixelBentoTitle>Item 1</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem variant="dark">
+            <PixelBentoIcon>🔥</PixelBentoIcon>
+            <PixelBentoTitle>Item 2</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem>
+            <PixelBentoIcon>💎</PixelBentoIcon>
+            <PixelBentoTitle>Item 3</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem variant="gradient">
+            <PixelBentoIcon>🚀</PixelBentoIcon>
+            <PixelBentoTitle>Item 4</PixelBentoTitle>
+          </PixelBentoItem>
+        </PixelBentoGrid>
       );
     
     case "pixel-accordion":
