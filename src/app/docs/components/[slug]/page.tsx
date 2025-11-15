@@ -5,6 +5,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { DocsSidebar } from "@/components/docs/sidebar";
 import { CodeBlock } from "@/components/docs/code-block";
+import { CollapsibleCode } from "@/components/docs/collapsible-code";
 import { PixelButton } from "@/components/ui/pixel/pixel-button";
 import { PixelCard, PixelCardContent, PixelCardDescription, PixelCardHeader, PixelCardTitle } from "@/components/ui/pixel/pixel-card";
 import { PixelBadge } from "@/components/ui/pixel/pixel-badge";
@@ -148,7 +149,7 @@ export default async function ComponentPage(props: { params: Promise<{ slug: str
               <p className="mb-4 text-sm dark:text-white/70">
                 Copy and paste the following code into your project at <code className="bg-black/10 dark:bg-white/10 px-2 py-1 rounded">{component.componentCode}</code>
               </p>
-              <CodeBlock code={componentSource} />
+              <CollapsibleCode code={componentSource} language="tsx" previewLines={50} />
             </section>
 
             {/* Props Table */}

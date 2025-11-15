@@ -36,6 +36,27 @@ import { PixelCollapsible, PixelCollapsibleContent, PixelCollapsibleTrigger } fr
 import { PixelScrollArea } from "@/components/ui/pixel/pixel-scroll-area";
 import { PixelAspectRatio } from "@/components/ui/pixel/pixel-aspect-ratio";
 import { PixelHoverCard, PixelHoverCardContent, PixelHoverCardTrigger } from "@/components/ui/pixel/pixel-hover-card";
+import { PixelHero, PixelHeroContent, PixelHeroTitle, PixelHeroSubtitle, PixelHeroDescription, PixelHeroActions, PixelHeroBadge } from "@/components/ui/pixel/pixel-hero";
+import { PixelBentoGrid, PixelBentoItem, PixelBentoHeader, PixelBentoTitle, PixelBentoDescription, PixelBentoIcon, PixelBentoContent } from "@/components/ui/pixel/pixel-bento";
+import { PixelFeatures, PixelFeatureItem, PixelFeatureIcon, PixelFeatureTitle, PixelFeatureDescription } from "@/components/ui/pixel/pixel-features";
+import { PixelCta, PixelCtaContent, PixelCtaTitle, PixelCtaDescription, PixelCtaActions, PixelCtaHighlight } from "@/components/ui/pixel/pixel-cta";
+import { PixelPricing, PixelPricingCard, PixelPricingTitle, PixelPricingPrice, PixelPricingPeriod, PixelPricingDescription, PixelPricingFeatures, PixelPricingFeature, PixelPricingActions, PixelPricingBadge } from "@/components/ui/pixel/pixel-pricing";
+import { PixelFooter, PixelFooterGrid, PixelFooterSection, PixelFooterTitle, PixelFooterLinks, PixelFooterLink, PixelFooterDivider, PixelFooterBottom, PixelFooterCopyright, PixelFooterSocial, PixelFooterSocialLink } from "@/components/ui/pixel/pixel-footer";
+import { PixelTestimonials, PixelTestimonialCard, PixelTestimonialQuote, PixelTestimonialAuthor, PixelTestimonialAvatar, PixelTestimonialInfo, PixelTestimonialName, PixelTestimonialRole, PixelTestimonialRating } from "@/components/ui/pixel/pixel-testimonials";
+import { PixelStats, PixelStatItem, PixelStatIcon, PixelStatValue, PixelStatLabel, PixelStatTrend } from "@/components/ui/pixel/pixel-stats";
+import { PixelFaq, PixelFaqList, PixelFaqItem, PixelFaqQuestion, PixelFaqAnswer } from "@/components/ui/pixel/pixel-faq";
+
+// Import special components
+import { PixelLoader } from "@/components/ui/pixel/pixel-loader";
+import { PixelTerminal } from "@/components/ui/pixel/pixel-terminal";
+import { PixelHealthBar, PixelManaBar, PixelXPBar, PixelInventory, PixelInventorySlot, PixelAchievement, PixelDamageNumber } from "@/components/ui/pixel/pixel-game-ui";
+import { PixelWindow, PixelWindowMenuBar, PixelWindowContent } from "@/components/ui/pixel/pixel-window";
+import { PixelAudioVisualizer } from "@/components/ui/pixel/pixel-audio-visualizer";
+import { PixelCodeBlock, PixelCode } from "@/components/ui/pixel/pixel-code-block";
+import { PixelTimeline, PixelTimelineCheckpoint } from "@/components/ui/pixel/pixel-timeline";
+import { PixelNotification, usePixelToast } from "@/components/ui/pixel/pixel-notification";
+import { PixelChat, PixelMessageBubble } from "@/components/ui/pixel/pixel-chat";
+import { PixelCountdown, PixelTimer } from "@/components/ui/pixel/pixel-countdown";
 
 // Import animation components
 import { PixelBlurText } from "@/components/ui/pixel/animations/pixel-blur-text";
@@ -151,6 +172,99 @@ export function ComponentPreview({ slug }: { slug: string }) {
           <PixelTabsContent value="tab1">Content for tab 1</PixelTabsContent>
           <PixelTabsContent value="tab2">Content for tab 2</PixelTabsContent>
         </PixelTabs>
+      );
+    
+    case "pixel-hero":
+      return (
+        <PixelHero variant="default" size="md" className="w-full">
+          <PixelHeroContent>
+            <PixelHeroBadge>🎮 New Release</PixelHeroBadge>
+            <PixelHeroTitle size="md">Pixel UI</PixelHeroTitle>
+            <PixelHeroSubtitle size="sm">8-Bit Retro Components</PixelHeroSubtitle>
+            <PixelHeroDescription>
+              Build nostalgic web experiences with pixel-perfect components
+            </PixelHeroDescription>
+            <PixelHeroActions>
+              <PixelButton size="sm">Get Started</PixelButton>
+              <PixelButton size="sm" variant="ghost">Learn More</PixelButton>
+            </PixelHeroActions>
+          </PixelHeroContent>
+        </PixelHero>
+      );
+    
+    case "pixel-bento":
+      return (
+        <PixelBentoGrid columns={3} className="w-full">
+          <PixelBentoItem span={2} variant="primary">
+            <PixelBentoHeader>
+              <PixelBentoIcon>🎮</PixelBentoIcon>
+              <PixelBentoTitle>Featured</PixelBentoTitle>
+              <PixelBentoDescription>Main content area</PixelBentoDescription>
+            </PixelBentoHeader>
+            <PixelBentoContent>
+              <p className="text-sm">Large featured section with 2-column span</p>
+            </PixelBentoContent>
+          </PixelBentoItem>
+          <PixelBentoItem variant="secondary">
+            <PixelBentoIcon>🎯</PixelBentoIcon>
+            <PixelBentoTitle>Item 1</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem variant="dark">
+            <PixelBentoIcon>🔥</PixelBentoIcon>
+            <PixelBentoTitle>Item 2</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem>
+            <PixelBentoIcon>💎</PixelBentoIcon>
+            <PixelBentoTitle>Item 3</PixelBentoTitle>
+          </PixelBentoItem>
+          <PixelBentoItem variant="gradient">
+            <PixelBentoIcon>🚀</PixelBentoIcon>
+            <PixelBentoTitle>Item 4</PixelBentoTitle>
+          </PixelBentoItem>
+        </PixelBentoGrid>
+      );
+    
+    case "pixel-features":
+      return (
+        <PixelFeatures columns={3} gap="lg" className="w-full">
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🚀</PixelFeatureIcon>
+            <PixelFeatureTitle>Fast</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Blazing fast performance
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🎨</PixelFeatureIcon>
+            <PixelFeatureTitle>Modern</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Pixel-perfect design
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+          <PixelFeatureItem hover="lift">
+            <PixelFeatureIcon>🔧</PixelFeatureIcon>
+            <PixelFeatureTitle>Flexible</PixelFeatureTitle>
+            <PixelFeatureDescription>
+              Fully customizable
+            </PixelFeatureDescription>
+          </PixelFeatureItem>
+        </PixelFeatures>
+      );
+    
+    case "pixel-cta":
+      return (
+        <PixelCta variant="primary" size="md" className="w-full">
+          <PixelCtaContent>
+            <PixelCtaTitle>Get Started Today</PixelCtaTitle>
+            <PixelCtaDescription>
+              Join thousands of developers building amazing things
+            </PixelCtaDescription>
+            <PixelCtaActions>
+              <PixelButton size="lg">Start Building</PixelButton>
+              <PixelButton variant="ghost" size="lg">Learn More</PixelButton>
+            </PixelCtaActions>
+          </PixelCtaContent>
+        </PixelCta>
       );
     
     case "pixel-accordion":
@@ -719,6 +833,472 @@ export function ComponentPreview({ slug }: { slug: string }) {
       return (
         <div className="w-full h-48">
           <PixelImageTrail images={["/example1.png", "/example2.png"]} />
+        </div>
+      );
+    
+    case "pixel-pricing":
+      return (
+        <PixelPricing columns={3} gap="md" className="max-w-5xl mx-auto">
+          <PixelPricingCard variant="default">
+            <PixelPricingTitle>Basic</PixelPricingTitle>
+            <PixelPricingPrice>$9</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For individuals</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>10 Projects</PixelPricingFeature>
+              <PixelPricingFeature>5GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>Email Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton variant="secondary">Choose Plan</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+          
+          <PixelPricingCard variant="featured">
+            <PixelPricingBadge>Popular</PixelPricingBadge>
+            <PixelPricingTitle>Pro</PixelPricingTitle>
+            <PixelPricingPrice>$29</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For teams</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>Unlimited Projects</PixelPricingFeature>
+              <PixelPricingFeature>50GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>Priority Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton>Choose Plan</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+          
+          <PixelPricingCard variant="default">
+            <PixelPricingTitle>Firm</PixelPricingTitle>
+            <PixelPricingPrice>$99</PixelPricingPrice>
+            <PixelPricingPeriod>per month</PixelPricingPeriod>
+            <PixelPricingDescription>For organizations</PixelPricingDescription>
+            <PixelPricingFeatures>
+              <PixelPricingFeature>Unlimited Everything</PixelPricingFeature>
+              <PixelPricingFeature>500GB Storage</PixelPricingFeature>
+              <PixelPricingFeature>24/7 Support</PixelPricingFeature>
+            </PixelPricingFeatures>
+            <PixelPricingActions>
+              <PixelButton variant="secondary">Contact Sales</PixelButton>
+            </PixelPricingActions>
+          </PixelPricingCard>
+        </PixelPricing>
+      );
+    
+    case "pixel-footer":
+      return (
+        <PixelFooter variant="default" size="md">
+          <PixelFooterGrid>
+            <PixelFooterSection>
+              <PixelFooterTitle>Product</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink><a href="#">Features</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Pricing</a></PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Company</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink><a href="#">About</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Blog</a></PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Resources</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink><a href="#">Docs</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Guides</a></PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+            
+            <PixelFooterSection>
+              <PixelFooterTitle>Legal</PixelFooterTitle>
+              <PixelFooterLinks>
+                <PixelFooterLink><a href="#">Privacy</a></PixelFooterLink>
+                <PixelFooterLink><a href="#">Terms</a></PixelFooterLink>
+              </PixelFooterLinks>
+            </PixelFooterSection>
+          </PixelFooterGrid>
+          
+          <PixelFooterDivider />
+          
+          <PixelFooterBottom>
+            <PixelFooterCopyright>© 2025 Pixel UI</PixelFooterCopyright>
+            <PixelFooterSocial>
+              <PixelFooterSocialLink href="#">🐦</PixelFooterSocialLink>
+              <PixelFooterSocialLink href="#">💼</PixelFooterSocialLink>
+            </PixelFooterSocial>
+          </PixelFooterBottom>
+        </PixelFooter>
+      );
+    
+    case "pixel-testimonials":
+      return (
+        <PixelTestimonials columns={3} gap="md" className="max-w-5xl mx-auto">
+          <PixelTestimonialCard variant="default">
+            <PixelTestimonialRating />
+            <PixelTestimonialQuote>
+              "Amazing library! The pixel-art aesthetic is perfect."
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>SM</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Sarah Miller</PixelTestimonialName>
+                <PixelTestimonialRole>Designer</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+          
+          <PixelTestimonialCard variant="primary">
+            <PixelTestimonialRating />
+            <PixelTestimonialQuote>
+              "Easy to use and highly customizable. Love it!"
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>MJ</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Mike Johnson</PixelTestimonialName>
+                <PixelTestimonialRole>Developer</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+          
+          <PixelTestimonialCard variant="default">
+            <PixelTestimonialRating />
+            <PixelTestimonialQuote>
+              "Excellent attention to detail. Production ready."
+            </PixelTestimonialQuote>
+            <PixelTestimonialAuthor>
+              <PixelTestimonialAvatar>EK</PixelTestimonialAvatar>
+              <PixelTestimonialInfo>
+                <PixelTestimonialName>Emma Kim</PixelTestimonialName>
+                <PixelTestimonialRole>PM</PixelTestimonialRole>
+              </PixelTestimonialInfo>
+            </PixelTestimonialAuthor>
+          </PixelTestimonialCard>
+        </PixelTestimonials>
+      );
+    
+    case "pixel-stats":
+      return (
+        <PixelStats columns={4} gap="md" className="max-w-6xl mx-auto">
+          <PixelStatItem variant="default">
+            <PixelStatIcon>👥</PixelStatIcon>
+            <PixelStatValue>10K+</PixelStatValue>
+            <PixelStatLabel>Active Users</PixelStatLabel>
+            <PixelStatTrend trend="up">+12%</PixelStatTrend>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="primary">
+            <PixelStatIcon>⭐</PixelStatIcon>
+            <PixelStatValue>4.9/5</PixelStatValue>
+            <PixelStatLabel>User Rating</PixelStatLabel>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="secondary">
+            <PixelStatIcon>🚀</PixelStatIcon>
+            <PixelStatValue>99.9%</PixelStatValue>
+            <PixelStatLabel>Uptime</PixelStatLabel>
+          </PixelStatItem>
+          
+          <PixelStatItem variant="gradient">
+            <PixelStatIcon>💰</PixelStatIcon>
+            <PixelStatValue>$2M+</PixelStatValue>
+            <PixelStatLabel>Revenue</PixelStatLabel>
+            <PixelStatTrend trend="up">+25%</PixelStatTrend>
+          </PixelStatItem>
+        </PixelStats>
+      );
+    
+    case "pixel-faq":
+      return (
+        <PixelFaq variant="default" className="max-w-3xl mx-auto">
+          <PixelFaqList>
+            <PixelFaqItem defaultOpen>
+              <PixelFaqQuestion>How do I install the components?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                You can install components by copying the code from our docs or via npm.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+            
+            <PixelFaqItem>
+              <PixelFaqQuestion>Is this library free to use?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                Yes! All components are completely free and open source.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+            
+            <PixelFaqItem>
+              <PixelFaqQuestion>Can I customize the styling?</PixelFaqQuestion>
+              <PixelFaqAnswer>
+                Absolutely! All components support className prop for easy customization.
+              </PixelFaqAnswer>
+            </PixelFaqItem>
+          </PixelFaqList>
+        </PixelFaq>
+      );
+    
+    case "pixel-loader":
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">Cassette</h4>
+            <PixelLoader variant="cassette" size="sm" text="LOADING" />
+          </div>
+          <div>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">Floppy</h4>
+            <PixelLoader variant="floppy" size="sm" text="READING" />
+          </div>
+          <div>
+            <h4 className="text-sm font-bold mb-2 text-center font-pixel">CRT</h4>
+            <PixelLoader variant="crt" size="sm" text="BOOTING" />
+          </div>
+        </div>
+      );
+    
+    case "pixel-terminal":
+      return (
+        <PixelTerminal 
+          variant="matrix" 
+          size="md"
+          prompt="user@pixel:~$"
+          commands={{
+            hello: () => 'Hello! Welcome to Pixel Terminal 👋',
+            info: () => 'Pixel Terminal v1.0\nType "help" for commands',
+            joke: () => 'Why do programmers prefer dark mode?\nBecause light attracts bugs! 🐛',
+          }}
+          welcomeMessage={`Pixel Terminal v1.0
+Type 'help' for available commands.
+Try: hello, info, joke
+
+`}
+        />
+      );
+    
+    case "pixel-game-ui":
+      return (
+        <div className="space-y-8 max-w-4xl mx-auto">
+          {/* Character Stats Section */}
+          <div className="border-4 border-black p-6 bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-16 h-16 border-4 border-black bg-[#ff8c00] flex items-center justify-center text-3xl">
+                🧙
+              </div>
+              <div>
+                <h3 className="text-xl font-bold font-pixel">Wizard</h3>
+                <p className="text-sm opacity-70">Level 12</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <PixelHealthBar current={85} max={100} label="HP" />
+              <PixelManaBar current={60} max={100} label="MP" />
+              <PixelXPBar currentXP={350} requiredXP={500} level={12} showLevel={false} />
+            </div>
+          </div>
+
+          {/* Inventory Grid */}
+          <PixelInventory columns={5} title="Inventory">
+            <PixelInventorySlot item="⚔️" rarity="legendary" />
+            <PixelInventorySlot item="🛡️" rarity="epic" />
+            <PixelInventorySlot item="💊" count={5} rarity="common" />
+            <PixelInventorySlot item="🔮" rarity="rare" />
+            <PixelInventorySlot item="👑" rarity="legendary" />
+            <PixelInventorySlot isEmpty />
+            <PixelInventorySlot isEmpty />
+            <PixelInventorySlot isEmpty />
+            <PixelInventorySlot isEmpty />
+            <PixelInventorySlot isEmpty />
+          </PixelInventory>
+
+          {/* Achievement Notification */}
+          <PixelAchievement
+            variant="gold"
+            title="First Victory"
+            description="Complete your first quest"
+            icon="🏆"
+            points={50}
+          />
+
+          {/* Damage Numbers */}
+          <div className="flex items-center justify-center gap-8 p-8 border-4 border-black bg-white dark:bg-[#2a2a2a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <PixelDamageNumber value={50} type="damage" animate={false} />
+            <PixelDamageNumber value={25} type="heal" animate={false} />
+            <PixelDamageNumber value={100} type="critical" animate={false} />
+          </div>
+        </div>
+      );
+    
+    case "pixel-window":
+      return (
+        <PixelWindow 
+          title="My Computer" 
+          icon="💻" 
+          className="w-[400px]"
+        >
+          <PixelWindowContent>
+            <div className="p-4">
+              <h3 className="font-bold font-pixel mb-2">Welcome to Pixel Window!</h3>
+              <p className="text-sm mb-4">
+                This is a draggable, resizable window component styled like Windows 95/98.
+              </p>
+              <div className="flex gap-2">
+                <PixelButton size="sm">Open</PixelButton>
+                <PixelButton size="sm" variant="secondary">Save</PixelButton>
+              </div>
+            </div>
+          </PixelWindowContent>
+        </PixelWindow>
+      );
+    
+    case "pixel-audio-visualizer":
+      return (
+        <div className="max-w-2xl mx-auto">
+          <PixelAudioVisualizer 
+            variant="bars" 
+            size="md"
+            animate={true}
+          />
+        </div>
+      );
+    
+    case "pixel-code-block":
+      return (
+        <div className="space-y-6">
+          <PixelCodeBlock 
+            code={`function greet(name) {\n  console.log(\`Hello, \${name}!\`);\n  return true;\n}\n\ngreet("World");`}
+            language="javascript"
+            title="example.js"
+            variant="terminal"
+            highlightLines={[2, 3]}
+          />
+          <div className="flex gap-4 items-center">
+            <span className="font-pixel text-sm">Inline code:</span>
+            <PixelCode>const x = 10;</PixelCode>
+          </div>
+        </div>
+      );
+    
+    case "pixel-timeline":
+      return (
+        <div className="max-w-3xl">
+          <PixelTimeline 
+            items={[
+              {
+                title: "Project Started",
+                description: "Initial planning phase completed.",
+                date: "Jan 2024",
+                variant: "success" as const,
+                icon: "🚀",
+              },
+              {
+                title: "Development",
+                description: "Building core features.",
+                date: "Feb 2024",
+                variant: "warning" as const,
+                icon: "⚡",
+              },
+              {
+                title: "Testing",
+                description: "QA scheduled for next month.",
+                date: "Mar 2024",
+                variant: "default" as const,
+                icon: "🔍",
+              },
+            ]}
+            markerSize="md"
+            markerShape="circle"
+          />
+        </div>
+      );
+    
+    case "pixel-notification":
+      return (
+        <div className="space-y-4 max-w-md mx-auto">
+          <PixelNotification
+            title="Success!"
+            description="Your changes have been saved successfully."
+            variant="success"
+            icon="✓"
+            onClose={() => {}}
+          />
+          <PixelNotification
+            title="Warning!"
+            description="This action requires your attention."
+            variant="warning"
+            icon="⚠"
+            action={{
+              label: "Review",
+              onClick: () => alert("Reviewing..."),
+            }}
+          />
+          <PixelNotification
+            title="Error!"
+            description="Something went wrong. Please try again."
+            variant="error"
+            icon="✕"
+            onClose={() => {}}
+          />
+        </div>
+      );
+    
+    case "pixel-chat":
+      return (
+        <div className="flex justify-center">
+          <PixelChat
+            messages={[
+              {
+                id: "1",
+                text: "Hey, check out these pixel components!",
+                sender: "other",
+                username: "Alice",
+                timestamp: "10:00 AM",
+                avatar: "👩",
+              },
+              {
+                id: "2",
+                text: "They look amazing! Very retro! 😄",
+                sender: "user",
+                timestamp: "10:01 AM",
+              },
+              {
+                id: "3",
+                text: "I know right! The 8-bit style is perfect!",
+                sender: "other",
+                username: "Alice",
+                timestamp: "10:02 AM",
+                avatar: "👩",
+              },
+            ]}
+            size="sm"
+            onSendMessage={(text) => console.log("Sent:", text)}
+          />
+        </div>
+      );
+    
+    case "pixel-countdown":
+      return (
+        <div className="space-y-8">
+          <div className="flex justify-center">
+            <PixelCountdown
+              targetDate={new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)}
+              variant="flip"
+              size="md"
+              labels={true}
+            />
+          </div>
+          <div className="flex justify-center">
+            <PixelTimer
+              initialMinutes={5}
+              initialSeconds={0}
+              variant="digital"
+              size="md"
+              showControls={true}
+            />
+          </div>
         </div>
       );
     
